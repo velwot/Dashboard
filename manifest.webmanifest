@@ -1,0 +1,10 @@
+{
+  "name": "ICT \u2192 AI Era Career Dashboard",
+  "short_name": "ICT Career",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f6f7fb",
+  "theme_color": "#111827",
+  "description": "Private-first four-year career dashboard for BE ICT students preparing for the AI era.",
+  "icons": []
+}

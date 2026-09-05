@@ -1,67 +1,71 @@
-# ICT → AI Era Career Dashboard
+# ICT → AI Era Career Dashboard — v3
 
-A local-first career dashboard for a BE ICT student preparing for the AI era.
+## Architecture
 
-## Privacy architecture
+This version keeps the **public template** and **private user state** separated.
 
-This project deliberately separates public template data from private user data.
-
-### Public layer
+### Public
 `data/public-template.json`
 
-Safe to commit to a public GitHub repository. It contains the four-year roadmap, generic tasks, checklists and public resource links.
+Contains generic four-year goals, task templates, checklists and public resource links.
 
-### Private layer
-Browser `localStorage`, key:
+Safe to publish on GitHub.
 
-`ictAiCareerDashboard.private.v2`
+### Private
+Browser localStorage key:
 
-This contains the user's personal profile, task progress, projects, people, opportunities, proof, reviews and notes.
+`ictAiCareerDashboard.private.v3`
 
-The app does not send this private data to a server.
+Contains:
+- personal profile
+- task completion state
+- personal actions
+- projects
+- people/network
+- opportunities
+- proof-of-work
+- weekly reviews
+- private notes/settings
 
-### Important
+The app does not send this data to a server.
 
-Do NOT commit:
-- exported private backups
-- personal notes
-- contact/people data
-- application tracking
-- private reviews
-- API keys
-- passwords/tokens
+## v3 additions
 
-Use **Export private backup** for backups and keep that JSON outside the public repository.
+- Installable PWA assets (`manifest.webmanifest`, `sw.js`)
+- Offline caching when hosted over HTTPS
+- Career-capital dashboard
+- Year scores for directional progress
+- Search/filter for actions
+- Deadline view for personal opportunities
+- Private project / network / opportunity / proof capture forms
+- Weekly review with last-review tracking
+- Public-link capture into private opportunities
+- GPT sync prompt that exposes private data only when the user deliberately copies it
+- Separate private backup import/export
+- Explicit public/private security guidance
 
 ## Deploy
 
-This is a static app.
+GitHub Pages, Vercel, or Netlify can serve this as a static site.
 
-GitHub Pages:
-1. Create a repository.
-2. Copy the files in this folder into the repository.
-3. Commit and push.
-4. Enable GitHub Pages from repository settings.
+Put the entire folder into a repository and deploy it.
 
-Vercel / Netlify:
-Deploy the same directory as a static site.
+For PWA service workers, use HTTPS hosting (GitHub Pages, Vercel or Netlify), not `file://`.
 
-## GPT exchange
+## Security
 
-The app has two import paths:
+Do not commit private backups, API keys, credentials or private contact data to the public repository.
 
-- **Import private backup**: replaces/loads personal data.
-- **Import public template**: updates the public roadmap/resources without touching private data.
+localStorage is local-to-browser storage, not encryption. Anyone with access to the same browser profile/device may potentially inspect it.
 
-The old single "Import GPT JSON" workflow should therefore be replaced by clearly labeled JSON outputs.
+## Next architectural milestone
 
-## Suggested future upgrades
+Only after the local-first version proves useful should you add optional authenticated cloud sync.
 
-- Optional encrypted cloud sync
-- Authentication
-- Cross-device sync
-- Calendar integration
-- Deadline reminders
-- Opportunity scanner
-- GPT-assisted weekly review
-- Versioned private backups
+Recommended future stack:
+Frontend: static PWA
+Auth: managed authentication
+DB: row-level-secured database
+Sync: per-user records
+Secrets: server-side only
+Optional: encrypted private fields before cloud storage

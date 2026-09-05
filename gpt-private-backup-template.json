@@ -16,6 +16,8 @@
   "reviews": [],
   "notes": [],
   "settings": {
-    "focusYear": 1
+    "focusYear": 1,
+    "installed": false,
+    "lastReview": ""
   }
 }
