@@ -1,0 +1,14 @@
+# Never commit personal backups or local user data
+ict-ai-career-private-backup.json
+private-backup*.json
+user-data*.json
+*.local.json
+.env
+.env.*
+!.env.example
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

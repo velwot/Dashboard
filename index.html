@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ICT → AI Era Career Dashboard</title>
+<style>
+:root{--bg:#f6f7fb;--panel:#fff;--text:#18202a;--muted:#667085;--line:#e5e7eb;--accent:#4f46e5;--accent2:#eef2ff;--good:#15803d;--warn:#b45309;--shadow:0 6px 24px rgba(16,24,40,.07)}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.45}
+.app{display:grid;grid-template-columns:240px 1fr;min-height:100vh}aside{background:#111827;color:#fff;padding:20px;position:sticky;top:0;height:100vh}.brand{font-weight:800}.brand-sub{font-size:12px;color:#9ca3af;margin:4px 0 20px}nav button{width:100%;text-align:left;border:0;background:transparent;color:#d1d5db;padding:10px;border-radius:9px;margin:2px 0}nav button.active,nav button:hover{background:#1f2937;color:#fff}.sidebar-foot{position:absolute;bottom:18px;left:20px;right:20px;font-size:11px;color:#9ca3af}
+main{padding:28px;max-width:1400px;width:100%;margin:auto}header{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:20px}h1{font-size:28px;letter-spacing:-.02em;margin:0 0 8px}h2{font-size:20px;margin:0 0 8px}h3{font-size:15px;margin:0 0 8px}p{margin:6px 0;color:var(--muted)}button,input,select,textarea{font:inherit}button{cursor:pointer}.actions{display:flex;gap:8px;flex-wrap:wrap}button.primary,button.ghost,.icon{border:1px solid var(--line);border-radius:9px;padding:9px 12px;background:#fff;color:var(--text)}button.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.grid{display:grid;gap:14px}.cards{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}.two{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}.three{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:16px;box-shadow:var(--shadow)}.section{margin-top:18px}.stat{font-size:27px;font-weight:800}.stat-label,.small{font-size:12px;color:var(--muted)}.progress{height:8px;background:#eef0f4;border-radius:999px;overflow:hidden}.progress span{display:block;height:100%;background:var(--accent)}
+.badge{display:inline-flex;padding:3px 7px;border-radius:999px;font-size:11px;font-weight:700;background:#f3f4f6;color:#475467}.good{background:#ecfdf3;color:#166534}.warn{background:#fff7ed;color:#9a3412}
+.list{display:flex;flex-direction:column;gap:8px}.item{border:1px solid var(--line);border-radius:10px;padding:12px;background:#fff}.item-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.item-title{font-weight:700}.item-actions{display:flex;gap:5px}.tabs{display:flex;gap:5px;flex-wrap:wrap;margin:12px 0}.tab{border:1px solid var(--line);background:#fff;padding:8px 10px;border-radius:8px}.tab.active{background:var(--accent2);border-color:#c7d2fe;color:#3730a3;font-weight:700}
+table{width:100%;border-collapse:collapse}th,td{padding:9px 7px;border-bottom:1px solid var(--line);text-align:left;font-size:13px;vertical-align:top}th{font-size:12px;color:var(--muted)}input,select,textarea{width:100%;border:1px solid #d0d5dd;border-radius:8px;padding:9px 10px;background:#fff;color:var(--text)}textarea{min-height:90px;resize:vertical}label{font-size:12px;font-weight:700;display:block;margin-bottom:5px}.form{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}.full{grid-column:1/-1}.empty{padding:30px;text-align:center;color:var(--muted);border:1px dashed #d0d5dd;border-radius:10px}.link{color:#4338ca;text-decoration:none}.link:hover{text-decoration:underline}.notice{background:#fffbeb;border:1px solid #fde68a;color:#854d0e;padding:11px;border-radius:10px;font-size:13px}.privacy{background:#ecfdf3;border:1px solid #bbf7d0;color:#166534;padding:12px;border-radius:10px;font-size:13px}code{background:#f2f4f7;padding:2px 4px;border-radius:4px}
+@media(max-width:850px){.app{grid-template-columns:1fr}aside{position:relative;height:auto}.sidebar-foot{position:static;margin-top:12px}main{padding:18px}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside>
+<div class="brand">ICT → AI Era</div><div class="brand-sub">Private career dashboard</div>
+<nav id="nav"></nav>
+<div class="sidebar-foot">Public template ≠ private user data</div>
+</aside>
+<main>
+<header>
+<div><div class="small" id="today"></div><h1 id="title">Dashboard</h1><p id="subtitle">Your public roadmap is separate from your private progress.</p></div>
+<div class="actions"><button class="primary" onclick="openPrivateImport()">Import private backup</button><button class="ghost" onclick="exportPrivate()">Export private backup</button><button class="ghost" onclick="openTemplateImport()">Import public template</button></div>
+<input id="privateFile" type="file" accept=".json,application/json" hidden onchange="importPrivate(event)">
+<input id="templateFile" type="file" accept=".json,application/json" hidden onchange="importTemplate(event)">
+</header>
+<div id="view"></div>
+</main>
+</div>
+
+<script>
+const PRIVATE_KEY="ictAiCareerDashboard.private.v2";
+let PUBLIC_TEMPLATE={schemaVersion:1,type:"public-template",goals:[],tasks:[],checklist:{},links:[]};
+let PRIVATE={schemaVersion:1,type:"private-backup",profile:{name:"",degree:"BE ICT",startYear:new Date().getFullYear(),target:"AI Systems / AI Engineering + Systems"},taskState:{},tasks:[],projects:[],people:[],opportunities:[],evidence:[],reviews:[],notes:[],settings:{focusYear:1}};
+let view="dashboard";
+
+async function loadPublicTemplate(){
+  try{
+    const res=await fetch("./data/public-template.json",{cache:"no-store"});
+    if(!res.ok) throw new Error("Template fetch failed");
+    PUBLIC_TEMPLATE=await res.json();
+  }catch(e){
+    // The app still works locally when opened as a file if a template was previously embedded/imported.
+    console.warn("Public template could not be fetched.",e);
+  }
+  renderNav(); render();
+}
+function deep(x){return JSON.parse(JSON.stringify(x))}
+function esc(v=""){return String(v).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
+function savePrivate(){localStorage.setItem(PRIVATE_KEY,JSON.stringify(PRIVATE))}
+function loadPrivate(){try{const x=JSON.parse(localStorage.getItem(PRIVATE_KEY));if(x)PRIVATE={...PRIVATE,...x}}catch{}}
+function resetPrivate(){
+  if(!confirm("Reset only your private data? The public template remains unchanged."))return;
+  PRIVATE={schemaVersion:1,type:"private-backup",profile:{name:"",degree:"BE ICT",startYear:new Date().getFullYear(),target:"AI Systems / AI Engineering + Systems"},taskState:{},tasks:[],projects:[],people:[],opportunities:[],evidence:[],reviews:[],notes:[],settings:{focusYear:1}};
+  savePrivate();render();
+}
+function navItems(){return [["dashboard","Dashboard"],["roadmap","4-Year Roadmap"],["actions","My Actions"],["projects","My Projects"],["network","My Network"],["opportunities","My Opportunities"],["proof","My Proof"],["updates","Public Updates"],["review","Weekly Review"],["data","Privacy / Data"]]}
+function renderNav(){document.getElementById("nav").innerHTML=navItems().map(([id,n])=>`<button class="${view===id?'active':''}" onclick="setView('${id}')">${n}</button>`).join("")}
+function setView(v){view=v;renderNav();render()}
+function render(){
+ document.getElementById("today").textContent=new Date().toLocaleDateString(undefined,{weekday:"long",year:"numeric",month:"long",day:"numeric"});
+ const titles={dashboard:"Dashboard",roadmap:"4-Year Roadmap",actions:"My Actions",projects:"My Projects",network:"My Network",opportunities:"My Opportunities",proof:"My Proof",updates:"Public Updates",review:"Weekly Review",data:"Privacy / Data"};
+ document.getElementById("title").textContent=titles[view];
+ document.getElementById("subtitle").textContent=view==="updates"?"These links are public-template data. Your notes about them stay private.":"Your public roadmap is separate from your private progress.";
+ const fn={dashboard:dashboard,roadmap:roadmap,actions:actions,projects:projects,network:network,opportunities:opportunities,proof:proof,updates:updates,review:review,data:data}[view];
+ document.getElementById("view").innerHTML=fn();
+}
+function stat(label,val){return `<div class="card"><div class="stat">${val}</div><div class="stat-label">${label}</div></div>`}
+function allTasks(){return PUBLIC_TEMPLATE.tasks.map(t=>{const own=PRIVATE.tasks.find(x=>x.id===t.id);return own?{...t,...own}:t})}
+function doneCount(){return allTasks().filter(t=>PRIVATE.taskState[t.id]?.status==="done" || t.status==="done").length}
+function dashboard(){
+ const ts=allTasks(), done=doneCount(), p=Math.round(done/(ts.length||1)*100), high=ts.filter(t=>PRIVATE.taskState[t.id]?.status!=="done"&&t.status!=="done"&&t.priority==="high").slice(0,7);
+ const y=Number(PRIVATE.settings.focusYear||1), yt=ts.filter(t=>Number(t.year)===y), yd=yt.filter(t=>PRIVATE.taskState[t.id]?.status==="done").length;
+ return `<div class="privacy"><b>Private-by-default.</b> The repository contains the public roadmap only. Your personal progress is stored in this browser under <code>${PRIVATE_KEY}</code> and is never written to the repository by this app.</div>
+ <div class="section grid cards">${stat("Overall completion",p+"%")}${stat("Projects",PRIVATE.projects.length)}${stat("People",PRIVATE.people.length)}${stat("Open opportunities",PRIVATE.opportunities.filter(o=>o.status!=="closed").length)}${stat("Proof items",PRIVATE.evidence.length)}${stat("Reviews",PRIVATE.reviews.length)}</div>
+ <div class="section grid two"><div class="card"><h2>Year ${y}</h2><p>${yd}/${yt.length} template actions completed.</p><div class="progress"><span style="width:${yt.length?Math.round(yd/yt.length*100):0}%"></span></div><div class="row">${[1,2,3,4].map(n=>`<button class="tab ${n===y?'active':''}" onclick="PRIVATE.settings.focusYear=${n};savePrivate();render()">Year ${n}</button>`).join("")}</div></div>
+ <div class="card"><h2>Your direction</h2><p><b>${esc(PRIVATE.profile.target||"Choose a target")}</b></p><p class="small">Career capital = capability + proof + experience + relationships + opportunity exposure.</p></div></div>
+ <div class="section grid two"><div class="card"><h2>Highest-value open actions</h2><div class="list">${high.map(taskRow).join("")||'<div class="empty">No high-priority template actions are open. Add a personal action if needed.</div>'}</div></div>
+ <div class="card"><h2>Four-year principle</h2><div class="grid three"><div class="item"><b>Build</b><p class="small">Independent systems, not tutorial copies.</p></div><div class="item"><b>Connect</b><p class="small">Seniors, professors, alumni, engineers and founders.</p></div><div class="item"><b>Prove</b><p class="small">Projects, open source, competitions, users, talks and internships.</p></div></div></div></div>`;
+}
+function taskRow(t){
+ const st=PRIVATE.taskState[t.id]?.status || t.status || "todo";
+ return `<div class="item"><div class="item-head"><div><div class="item-title">${esc(t.title)}</div><div class="small">${esc(t.category)} · Year ${t.year} · ${esc(t.priority||"")}</div></div><button class="icon" onclick="toggleTask('${t.id}')">${st==="done"?"↩":"✓"}</button></div>${t.link?`<div class="small"><a class="link" target="_blank" rel="noreferrer" href="${esc(t.link)}">Open resource</a></div>`:""}</div>`;
+}
+function roadmap(){
+ const years=[1,2,3,4];
+ return `${years.map(y=>`<div class="section card"><div class="row" style="justify-content:space-between"><h2>Year ${y}</h2><span class="badge">${PUBLIC_TEMPLATE.goals.filter(g=>g.year===y).length} goals</span></div>
+ ${PUBLIC_TEMPLATE.goals.filter(g=>g.year===y).map(g=>`<div class="item"><b>${esc(g.title)}</b><p class="small">${esc(g.notes)}</p></div>`).join("")}
+ <hr><h3>Milestones</h3><div class="grid three">${(PUBLIC_TEMPLATE.checklist[String(y)]||[]).map(x=>`<div class="item"><div class="small">□ ${esc(x)}</div></div>`).join("")}</div></div>`).join("")}`;
+}
+function actions(){
+ const ts=allTasks(); return `<div class="card"><div class="actions"><button class="primary" onclick="addPersonalTask()">+ Add personal action</button><button class="ghost" onclick="resetPrivate()">Reset private data</button></div><p class="small">Template actions come from <code>data/public-template.json</code>. Your status is stored privately.</p></div>
+ <div class="section list">${ts.map(taskRow).join("")}${PRIVATE.tasks.filter(t=>!PUBLIC_TEMPLATE.tasks.some(pt=>pt.id===t.id)).map(taskRow).join("")}</div>`;
+}
+function toggleTask(id){
+ PRIVATE.taskState[id]=PRIVATE.taskState[id]||{};
+ PRIVATE.taskState[id].status=(PRIVATE.taskState[id].status==="done"?"todo":"done");
+ savePrivate();render();
+}
+function addPersonalTask(){
+ const title=prompt("Personal action:");if(!title)return;
+ const year=Math.max(1,Math.min(4,Number(prompt("Year 1–4:",PRIVATE.settings.focusYear||1))||1));
+ const category=prompt("Category:","Personal")||"Personal";
+ const priority=prompt("Priority: high / medium / low","medium")||"medium";
+ const link=prompt("Optional link:","")||"";
+ PRIVATE.tasks.push({id:"u"+Math.random().toString(36).slice(2,9),title,category,year,due:"",status:"todo",priority,link});
+ savePrivate();render();
+}
+function projects(){
+ return `<div class="card"><button class="primary" onclick="addProject()">+ Add project</button><p class="small">Keep the problem, stack, your contribution, results and public evidence together.</p></div>
+ <div class="section grid two">${PRIVATE.projects.map(p=>`<div class="card"><div class="item-head"><h3>${esc(p.title)}</h3><button class="icon" onclick="removePrivate('projects','${p.id}')">×</button></div><p>${esc(p.problem||"")}</p><div class="small"><b>Stack:</b> ${esc(p.stack||"-")}</div><div class="small"><b>Your role:</b> ${esc(p.role||"-")}</div><div class="small"><b>Result:</b> ${esc(p.result||"-")}</div>${p.link?`<a class="link" target="_blank" rel="noreferrer" href="${esc(p.link)}">Evidence</a>`:""}</div>`).join("")||'<div class="empty">No personal projects recorded yet.</div>'}</div>`;
+}
+function addProject(){
+ const title=prompt("Project title:");if(!title)return;
+ PRIVATE.projects.push({id:"p"+Math.random().toString(36).slice(2,9),title,problem:prompt("Problem:","")||"",stack:prompt("Stack:","")||"",role:prompt("Your role:","")||"",result:prompt("Result / proof:","")||"",year:Number(prompt("Year:",PRIVATE.settings.focusYear||1))||1,status:"active",link:prompt("GitHub/demo link:","")||""});
+ savePrivate();render();
+}
+function network(){
+ return `<div class="card"><button class="primary" onclick="addPerson()">+ Add person</button><p class="small">This data is private and is never written to the public template.</p></div><div class="section card"><table><tr><th>Name</th><th>Role</th><th>Met</th><th>Last contact</th><th>Next</th><th></th></tr>${PRIVATE.people.map(p=>`<tr><td><b>${esc(p.name)}</b></td><td>${esc(p.role||"")}</td><td>${esc(p.met||"")}</td><td>${esc(p.last||"")}</td><td>${esc(p.next||"")}</td><td><button class="icon" onclick="removePrivate('people','${p.id}')">×</button></td></tr>`).join("")||'<tr><td colspan="6" class="small">No people yet.</td></tr>'}</table></div>`;
+}
+function addPerson(){
+ const name=prompt("Name:");if(!name)return;
+ PRIVATE.people.push({id:"n"+Math.random().toString(36).slice(2,9),name,role:prompt("Role / college / company:","")||"",met:prompt("How did you meet?","")||"",last:new Date().toISOString().slice(0,10),next:prompt("Next useful step:","")||"",notes:""});
+ savePrivate();render();
+}
+function opportunities(){
+ return `<div class="card"><button class="primary" onclick="addOpportunity()">+ Add opportunity</button><p class="small">Save only opportunities you might actually pursue. Avoid turning the dashboard into an endless news feed.</p></div><div class="section list">${PRIVATE.opportunities.map(o=>`<div class="item"><div class="item-head"><div><div class="item-title">${esc(o.title)}</div><div class="small">${esc(o.type||"")} · ${esc(o.date||"")} · ${esc(o.status||"")}</div></div><button class="icon" onclick="removePrivate('opportunities','${o.id}')">×</button></div><p>${esc(o.notes||"")}</p>${o.link?`<a class="link" target="_blank" rel="noreferrer" href="${esc(o.link)}">Open</a>`:""}</div>`).join("")||'<div class="empty">No personal opportunities tracked.</div>'}</div>`;
+}
+function addOpportunity(){
+ const title=prompt("Opportunity:");if(!title)return;
+ PRIVATE.opportunities.push({id:"o"+Math.random().toString(36).slice(2,9),title,type:prompt("Type:","Hackathon")||"Hackathon",date:prompt("Deadline/date:","")||"",link:prompt("Official link:","")||"",notes:prompt("Why it matters:","")||"",status:"open"});
+ savePrivate();render();
+}
+function proof(){
+ return `<div class="card"><button class="primary" onclick="addProof()">+ Add proof</button><p class="small">Evidence beats claims: GitHub contribution, deployed project, competition result, publication, internship, talk, users, recommendation, etc.</p></div><div class="section grid two">${PRIVATE.evidence.map(e=>`<div class="card"><div class="item-head"><h3>${esc(e.title)}</h3><button class="icon" onclick="removePrivate('evidence','${e.id}')">×</button></div><div class="small">${esc(e.type||"")}</div><p>${esc(e.result||"")}</p>${e.link?`<a class="link" target="_blank" rel="noreferrer" href="${esc(e.link)}">Evidence link</a>`:""}</div>`).join("")||'<div class="empty">No proof items yet.</div>'}</div>`;
+}
+function addProof(){
+ const title=prompt("Proof title:");if(!title)return;
+ PRIVATE.evidence.push({id:"e"+Math.random().toString(36).slice(2,9),title,type:prompt("Type:","project")||"project",result:prompt("What proves it?","")||"",link:prompt("Evidence URL:","")||"",date:new Date().toISOString().slice(0,10)});
+ savePrivate();render();
+}
+function updates(){
+ return `<div class="privacy"><b>Public data.</b> These links are safe to publish in GitHub because they are general discovery resources, not your private notes or progress.</div><div class="section grid two">${(PUBLIC_TEMPLATE.links||[]).map(l=>`<div class="card"><span class="badge">${esc(l.category||"Update")}</span><h3>${esc(l.title)}</h3><p>${esc(l.why||"")}</p><a class="link" target="_blank" rel="noreferrer" href="${esc(l.url)}">${esc(l.url)}</a></div>`).join("")}</div>`;
+}
+function review(){
+ return `<div class="card"><h2>Weekly review</h2><p>Keep it short. The point is to prevent drift and fake productivity.</p><div class="form"><div class="full"><label>What did I actually ship/finish?</label><textarea id="q1"></textarea></div><div class="full"><label>What created the most capability?</label><textarea id="q2"></textarea></div><div class="full"><label>What created proof, relationship or opportunity?</label><textarea id="q3"></textarea></div><div class="full"><label>What was fake productivity?</label><textarea id="q4"></textarea></div><div class="full"><label>What are next week's three highest-value actions?</label><textarea id="q5"></textarea></div></div><button class="primary" onclick="saveReview()">Save review</button></div><div class="section list">${PRIVATE.reviews.slice().reverse().map(r=>`<div class="item"><div class="item-head"><b>${esc(r.date)}</b><button class="icon" onclick="removePrivate('reviews','${r.id}')">×</button></div><p><b>Shipped:</b> ${esc(r.q1)}</p><p><b>Capability:</b> ${esc(r.q2)}</p><p><b>Proof/network:</b> ${esc(r.q3)}</p><p><b>Fake productivity:</b> ${esc(r.q4)}</p><p><b>Next:</b> ${esc(r.q5)}</p></div>`).join("")||'<div class="empty">No reviews yet.</div>'}</div>`;
+}
+function saveReview(){
+ const q=[1,2,3,4,5].map(i=>document.getElementById("q"+i).value.trim());
+ if(!q.some(Boolean))return alert("Write at least one answer.");
+ PRIVATE.reviews.push({id:"r"+Math.random().toString(36).slice(2,9),date:new Date().toISOString().slice(0,10),q1:q[0],q2:q[1],q3:q[2],q4:q[3],q5:q[4]});
+ savePrivate();render();
+}
+function data(){
+ return `<div class="grid two"><div class="card"><h2>Privacy model</h2><p><b>Public layer:</b> <code>data/public-template.json</code></p><p><b>Private layer:</b> browser localStorage under <code>${PRIVATE_KEY}</code></p><p><b>Repository:</b> contains no personal tasks, people, reviews, private notes or backups unless you deliberately add them yourself.</p><div class="notice">Do not commit exported private JSON to a public GitHub repository.</div></div><div class="card"><h2>Your profile</h2><div class="form"><div><label>Name</label><input id="name" value="${esc(PRIVATE.profile.name)}"></div><div><label>Degree</label><input id="degree" value="${esc(PRIVATE.profile.degree)}"></div><div><label>Start year</label><input id="start" type="number" value="${esc(PRIVATE.profile.startYear)}"></div><div class="full"><label>Target</label><input id="target" value="${esc(PRIVATE.profile.target)}"></div></div><button class="primary" onclick="saveProfile()">Save private profile</button></div></div>
+ <div class="section card"><h2>Backup controls</h2><div class="actions"><button class="primary" onclick="exportPrivate()">Export private backup</button><button class="ghost" onclick="openPrivateImport()">Import private backup</button><button class="ghost" onclick="openTemplateImport()">Import public template</button><button class="ghost" onclick="resetPrivate()">Reset private data</button></div><p class="small">A private backup can contain your people, reviews, projects and progress. Store it somewhere private.</p></div>`;
+}
+function saveProfile(){PRIVATE.profile.name=document.getElementById("name").value.trim();PRIVATE.profile.degree=document.getElementById("degree").value.trim();PRIVATE.profile.startYear=Number(document.getElementById("start").value)||new Date().getFullYear();PRIVATE.profile.target=document.getElementById("target").value.trim();savePrivate();render()}
+function removePrivate(collection,id){if(!confirm("Delete this private item?"))return;PRIVATE[collection]=PRIVATE[collection].filter(x=>x.id!==id);savePrivate();render()}
+function downloadJson(obj,name){const b=new Blob([JSON.stringify(obj,null,2)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+function exportPrivate(){downloadJson(PRIVATE,"ict-ai-career-private-backup.json")}
+function openPrivateImport(){document.getElementById("privateFile").click()}
+function openTemplateImport(){document.getElementById("templateFile").click()}
+function importPrivate(ev){const f=ev.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const x=JSON.parse(r.result);if(x.schemaVersion!==1||x.type!=="private-backup")throw new Error("This is not a private backup.");PRIVATE={...PRIVATE,...x};savePrivate();render();alert("Private backup imported.");}catch(e){alert("Import failed: "+e.message)}ev.target.value=""};r.readAsText(f)}
+function importTemplate(ev){const f=ev.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const x=JSON.parse(r.result);if(x.schemaVersion!==1||x.type!=="public-template")throw new Error("This is not a public template.");PUBLIC_TEMPLATE=x;render();alert("Public template imported. Your private data was not changed.");}catch(e){alert("Template import failed: "+e.message)}ev.target.value=""};r.readAsText(f)}
+loadPrivate();loadPublicTemplate();
+</script>
+</body>
+</html>

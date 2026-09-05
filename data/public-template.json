@@ -1,0 +1,802 @@
+{
+  "schemaVersion": 1,
+  "type": "public-template",
+  "profile_defaults": {
+    "degree": "BE ICT",
+    "target": "AI Systems / AI Engineering + Systems"
+  },
+  "goals": [
+    {
+      "id": "g1",
+      "year": 1,
+      "title": "Build unusually strong foundations",
+      "notes": "Programming, DSA, Git, Linux, SQL, networking and software engineering basics."
+    },
+    {
+      "id": "g2",
+      "year": 1,
+      "title": "Enter the technical ecosystem early",
+      "notes": "Seniors, professors, ambitious peers, events, hackathons and technical communities."
+    },
+    {
+      "id": "g3",
+      "year": 1,
+      "title": "Create your first proof-of-work trail",
+      "notes": "Independent projects, GitHub, open source and public demos."
+    },
+    {
+      "id": "g4",
+      "year": 2,
+      "title": "Become a competent software engineer",
+      "notes": "OS, DBMS, networking, backend, APIs, testing, Docker and cloud basics."
+    },
+    {
+      "id": "g5",
+      "year": 2,
+      "title": "Start external validation",
+      "notes": "Competitions, hackathons, research, open source, internships and startup exposure."
+    },
+    {
+      "id": "g6",
+      "year": 3,
+      "title": "Choose and deepen a specialization",
+      "notes": "AI systems / AI engineering + systems; build a difficult flagship project."
+    },
+    {
+      "id": "g7",
+      "year": 3,
+      "title": "Get serious real-world experience",
+      "notes": "Strong internship, research, startup or open-source experience."
+    },
+    {
+      "id": "g8",
+      "year": 4,
+      "title": "Convert career capital into opportunities",
+      "notes": "Jobs, startups, research, higher study and long-term network."
+    }
+  ],
+  "tasks": [
+    {
+      "id": "y1t01",
+      "title": "Create and configure GitHub profile",
+      "category": "Proof",
+      "year": 1,
+      "priority": "high",
+      "link": "https://github.com/"
+    },
+    {
+      "id": "y1t02",
+      "title": "Complete GitHub Skills introduction",
+      "category": "Tools",
+      "year": 1,
+      "priority": "medium",
+      "link": "https://skills.github.com/"
+    },
+    {
+      "id": "y1t03",
+      "title": "Learn one primary programming language deeply",
+      "category": "Fundamentals",
+      "year": 1,
+      "priority": "high",
+      "link": "https://roadmap.sh/computer-science"
+    },
+    {
+      "id": "y1t04",
+      "title": "Learn Linux and command-line basics",
+      "category": "Systems",
+      "year": 1,
+      "priority": "high",
+      "link": "https://roadmap.sh/linux"
+    },
+    {
+      "id": "y1t05",
+      "title": "Build DSA fundamentals",
+      "category": "DSA",
+      "year": 1,
+      "priority": "high",
+      "link": "https://leetcode.com/problemset/"
+    },
+    {
+      "id": "y1t06",
+      "title": "Learn SQL and relational database fundamentals",
+      "category": "Databases",
+      "year": 1,
+      "priority": "high",
+      "link": "https://roadmap.sh/sql"
+    },
+    {
+      "id": "y1t07",
+      "title": "Build first independent project",
+      "category": "Projects",
+      "year": 1,
+      "priority": "high",
+      "link": ""
+    },
+    {
+      "id": "y1t08",
+      "title": "Build second project with API and persistent storage",
+      "category": "Projects",
+      "year": 1,
+      "priority": "high",
+      "link": ""
+    },
+    {
+      "id": "y1t09",
+      "title": "Attend at least 3 technical events",
+      "category": "Events",
+      "year": 1,
+      "priority": "high",
+      "link": "https://gdg.community.dev/"
+    },
+    {
+      "id": "y1t10",
+      "title": "Participate in at least 2 hackathons",
+      "category": "Hackathons",
+      "year": 1,
+      "priority": "high",
+      "link": "https://devpost.com/hackathons?status=open"
+    },
+    {
+      "id": "y1t11",
+      "title": "Find 3 strong seniors and learn from their experience",
+      "category": "Networking",
+      "year": 1,
+      "priority": "high",
+      "link": ""
+    },
+    {
+      "id": "y1t12",
+      "title": "Identify 2 professors and discuss projects/research",
+      "category": "Professors",
+      "year": 1,
+      "priority": "medium",
+      "link": ""
+    },
+    {
+      "id": "y1t13",
+      "title": "Join one technical community and actively contribute",
+      "category": "Community",
+      "year": 1,
+      "priority": "medium",
+      "link": "https://students.ieee.org/student-branches/"
+    },
+    {
+      "id": "y1t14",
+      "title": "Make first meaningful open-source contribution",
+      "category": "Open Source",
+      "year": 1,
+      "priority": "medium",
+      "link": "https://github.com/explore"
+    },
+    {
+      "id": "y1t15",
+      "title": "Create evidence-based one-page resume",
+      "category": "Career",
+      "year": 1,
+      "priority": "medium",
+      "link": ""
+    },
+    {
+      "id": "y1t16",
+      "title": "Create GitHub/profile README showing real work",
+      "category": "Proof",
+      "year": 1,
+      "priority": "medium",
+      "link": "https://skills.github.com/"
+    },
+    {
+      "id": "y1t17",
+      "title": "Enter one programming or technical competition",
+      "category": "Competition",
+      "year": 1,
+      "priority": "medium",
+      "link": "https://icpc.global/regionals/regionals"
+    },
+    {
+      "id": "y1t18",
+      "title": "Give one technical demo or presentation",
+      "category": "Communication",
+      "year": 1,
+      "priority": "medium",
+      "link": ""
+    },
+    {
+      "id": "y1t19",
+      "title": "Start a weekly review habit",
+      "category": "Review",
+      "year": 1,
+      "priority": "high",
+      "link": ""
+    },
+    {
+      "id": "y1t20",
+      "title": "Build one computer or OS-adjacent tool",
+      "category": "AI OS",
+      "year": 1,
+      "priority": "medium",
+      "link": ""
+    },
+    {
+      "id": "y2t01",
+      "title": "Learn operating systems properly",
+      "category": "Systems",
+      "year": 2,
+      "priority": "high",
+      "link": "https://roadmap.sh/computer-science"
+    },
+    {
+      "id": "y2t02",
+      "title": "Learn networking properly",
+      "category": "Networking",
+      "year": 2,
+      "priority": "high",
+      "link": "https://roadmap.sh/network-engineer"
+    },
+    {
+      "id": "y2t03",
+      "title": "Deepen DBMS and query fundamentals",
+      "category": "Databases",
+      "year": 2,
+      "priority": "high",
+      "link": "https://roadmap.sh/postgresql"
+    },
+    {
+      "id": "y2t04",
+      "title": "Build and deploy a medium-sized backend",
+      "category": "Backend",
+      "year": 2,
+      "priority": "high",
+      "link": "https://roadmap.sh/backend"
+    },
+    {
+      "id": "y2t05",
+      "title": "Learn REST APIs, auth and authorization",
+      "category": "Backend",
+      "year": 2,
+      "priority": "high",
+      "link": "https://roadmap.sh/api-design"
+    },
+    {
+      "id": "y2t06",
+      "title": "Containerize a project with Docker",
+      "category": "DevOps",
+      "year": 2,
+      "priority": "medium",
+      "link": "https://docs.docker.com/get-started/"
+    },
+    {
+      "id": "y2t07",
+      "title": "Learn basic cloud deployment",
+      "category": "Cloud",
+      "year": 2,
+      "priority": "medium",
+      "link": "https://aws.amazon.com/events/"
+    },
+    {
+      "id": "y2t08",
+      "title": "Participate in serious hackathons",
+      "category": "Hackathons",
+      "year": 2,
+      "priority": "high",
+      "link": "https://devpost.com/hackathons?status=open"
+    },
+    {
+      "id": "y2t09",
+      "title": "Contribute regularly to open source",
+      "category": "Open Source",
+      "year": 2,
+      "priority": "high",
+      "link": "https://github.com/explore"
+    },
+    {
+      "id": "y2t10",
+      "title": "Try one AI/ML competition",
+      "category": "AI",
+      "year": 2,
+      "priority": "medium",
+      "link": "https://www.kaggle.com/competitions/"
+    },
+    {
+      "id": "y2t11",
+      "title": "Apply to internships, startups and research opportunities",
+      "category": "Internships",
+      "year": 2,
+      "priority": "high",
+      "link": "https://careers.microsoft.com/v2/global/en/students"
+    },
+    {
+      "id": "y2t12",
+      "title": "Talk to alumni and industry professionals across the year",
+      "category": "Networking",
+      "year": 2,
+      "priority": "high",
+      "link": ""
+    },
+    {
+      "id": "y2t13",
+      "title": "Get concrete research/project work from a professor",
+      "category": "Research",
+      "year": 2,
+      "priority": "high",
+      "link": "https://research.google/pubs/"
+    },
+    {
+      "id": "y2t14",
+      "title": "Give a technical talk or workshop",
+      "category": "Communication",
+      "year": 2,
+      "priority": "medium",
+      "link": ""
+    },
+    {
+      "id": "y2t15",
+      "title": "Start learning LLM and agent application architecture",
+      "category": "AI",
+      "year": 2,
+      "priority": "high",
+      "link": "https://roadmap.sh/ai-engineer"
+    },
+    {
+      "id": "y2t16",
+      "title": "Build a computer-control prototype with permissions and logs",
+      "category": "AI OS",
+      "year": 2,
+      "priority": "high",
+      "link": ""
+    },
+    {
+      "id": "y2t17",
+      "title": "Improve resume using measurable outcomes",
+      "category": "Career",
+      "year": 2,
+      "priority": "high",
+      "link": ""
+    },
+    {
+      "id": "y2t18",
+      "title": "Remove low-value activities that do not create career capital",
+      "category": "Opportunity Cost",
+      "year": 2,
+      "priority": "high",
+      "link": ""
+    },
+    {
+      "id": "y3t01",
+      "title": "Choose a specialization based on evidence",
+      "category": "Direction",
+      "year": 3,
+      "priority": "high",
+      "link": "https://roadmap.sh/roadmaps"
+    },
+    {
+      "id": "y3t02",
+      "title": "Deepen AI systems: agents, retrieval, evaluation and inference",
+      "category": "AI Systems",
+      "year": 3,
+      "priority": "high",
+      "link": "https://roadmap.sh/ai-engineer"
+    },
+    {
+      "id": "y3t03",
+      "title": "Learn distributed systems and system design",
+      "category": "Systems",
+      "year": 3,
+      "priority": "high",
+      "link": "https://roadmap.sh/system-design"
+    },
+    {
+      "id": "y3t04",
+      "title": "Study AI security and permission boundaries",
+      "category": "AI Security",
+      "year": 3,
+      "priority": "high",
+      "link": "https://roadmap.sh/ai-red-teaming"
+    },
+    {
+      "id": "y3t05",
+      "title": "Build flagship AI-OS project v1",
+      "category": "AI OS",
+      "year": 3,
+      "priority": "high",
+      "link": ""
+    },
+    {
+      "id": "y3t06",
+      "title": "Document architecture and publish the flagship project",
+      "category": "Proof",
+      "year": 3,
+      "priority": "high",
+      "link": "https://github.com/"
+    },
+    {
+      "id": "y3t07",
+      "title": "Get a strong internship, research role or startup experience",
+      "category": "Experience",
+      "year": 3,
+      "priority": "high",
+      "link": "https://careers.microsoft.com/v2/global/en/students"
+    },
+    {
+      "id": "y3t08",
+      "title": "Apply to serious open-source and research programs",
+      "category": "Open Source",
+      "year": 3,
+      "priority": "high",
+      "link": "https://summerofcode.withgoogle.com/"
+    },
+    {
+      "id": "y3t09",
+      "title": "Build relationships with researchers or senior engineers outside college",
+      "category": "Networking",
+      "year": 3,
+      "priority": "high",
+      "link": ""
+    },
+    {
+      "id": "y3t10",
+      "title": "Present or publish serious technical work",
+      "category": "Research",
+      "year": 3,
+      "priority": "medium",
+      "link": "https://arxiv.org/"
+    },
+    {
+      "id": "y3t11",
+      "title": "Do advanced competitions/hackathons relevant to your specialization",
+      "category": "Competition",
+      "year": 3,
+      "priority": "medium",
+      "link": "https://ctftime.org/"
+    },
+    {
+      "id": "y3t12",
+      "title": "Practice technical interviews and DSA consistently",
+      "category": "Interviews",
+      "year": 3,
+      "priority": "high",
+      "link": "https://leetcode.com/problemset/"
+    },
+    {
+      "id": "y3t13",
+      "title": "Get real users or external testers for an important project",
+      "category": "Projects",
+      "year": 3,
+      "priority": "high",
+      "link": ""
+    },
+    {
+      "id": "y3t14",
+      "title": "Write one serious technical article or engineering post",
+      "category": "Communication",
+      "year": 3,
+      "priority": "medium",
+      "link": ""
+    },
+    {
+      "id": "y3t15",
+      "title": "Mentor or teach a junior student",
+      "category": "Leadership",
+      "year": 3,
+      "priority": "medium",
+      "link": ""
+    },
+    {
+      "id": "y4t01",
+      "title": "Finish flagship project at production-quality level",
+      "category": "AI OS",
+      "year": 4,
+      "priority": "high",
+      "link": ""
+    },
+    {
+      "id": "y4t02",
+      "title": "Obtain external proof for flagship project",
+      "category": "Proof",
+      "year": 4,
+      "priority": "high",
+      "link": ""
+    },
+    {
+      "id": "y4t03",
+      "title": "Prepare strongest 3\u20135 projects for portfolio",
+      "category": "Portfolio",
+      "year": 4,
+      "priority": "high",
+      "link": "https://github.com/"
+    },
+    {
+      "id": "y4t04",
+      "title": "Maintain evidence-based one-page graduate resume",
+      "category": "Career",
+      "year": 4,
+      "priority": "high",
+      "link": ""
+    },
+    {
+      "id": "y4t05",
+      "title": "Practice coding interviews systematically",
+      "category": "Interviews",
+      "year": 4,
+      "priority": "high",
+      "link": "https://leetcode.com/problemset/"
+    },
+    {
+      "id": "y4t06",
+      "title": "Practice system-design and project deep dives",
+      "category": "Interviews",
+      "year": 4,
+      "priority": "high",
+      "link": "https://roadmap.sh/system-design"
+    },
+    {
+      "id": "y4t07",
+      "title": "Apply broadly to software, AI, infrastructure and systems roles",
+      "category": "Jobs",
+      "year": 4,
+      "priority": "high",
+      "link": "https://careers.microsoft.com/v2/global/en/students"
+    },
+    {
+      "id": "y4t08",
+      "title": "Apply to startups and research organizations too",
+      "category": "Jobs",
+      "year": 4,
+      "priority": "high",
+      "link": "https://www.amazon.jobs/"
+    },
+    {
+      "id": "y4t09",
+      "title": "Maintain relationships with alumni, professors and industry contacts",
+      "category": "Networking",
+      "year": 4,
+      "priority": "high",
+      "link": ""
+    },
+    {
+      "id": "y4t10",
+      "title": "Ask for referrals only after earning trust through relevant work",
+      "category": "Networking",
+      "year": 4,
+      "priority": "medium",
+      "link": ""
+    },
+    {
+      "id": "y4t11",
+      "title": "Present flagship project outside college and collect hard feedback",
+      "category": "Communication",
+      "year": 4,
+      "priority": "medium",
+      "link": ""
+    },
+    {
+      "id": "y4t12",
+      "title": "Create a four-year technical retrospective",
+      "category": "Reflection",
+      "year": 4,
+      "priority": "medium",
+      "link": ""
+    },
+    {
+      "id": "y4t13",
+      "title": "Prepare recommendation/reference material",
+      "category": "Career",
+      "year": 4,
+      "priority": "medium",
+      "link": ""
+    },
+    {
+      "id": "y4t14",
+      "title": "Evaluate job, startup, research and higher-study options by evidence",
+      "category": "Direction",
+      "year": 4,
+      "priority": "high",
+      "link": ""
+    },
+    {
+      "id": "y4t15",
+      "title": "Create a three-year post-graduation plan",
+      "category": "Strategy",
+      "year": 4,
+      "priority": "high",
+      "link": ""
+    },
+    {
+      "id": "y4t16",
+      "title": "Archive career backup: resumes, projects, references and achievements",
+      "category": "Data",
+      "year": 4,
+      "priority": "medium",
+      "link": ""
+    }
+  ],
+  "checklist": {
+    "1": [
+      "Strong primary programming language",
+      "Git/GitHub",
+      "Linux basics",
+      "DSA fundamentals",
+      "SQL",
+      "2\u20134 independent projects",
+      "2+ hackathons",
+      "3+ technical events",
+      "Strong senior relationships",
+      "Professor relationships",
+      "First open-source contribution",
+      "Competition experience",
+      "Technical demo",
+      "Resume + proof-of-work",
+      "Weekly review"
+    ],
+    "2": [
+      "OS",
+      "Networking",
+      "DBMS",
+      "Deployed medium project",
+      "REST/auth",
+      "Docker",
+      "Cloud basics",
+      "Regular open source",
+      "Competition",
+      "Research exposure",
+      "Internship applications",
+      "Alumni/industry conversations",
+      "LLM/agent fundamentals",
+      "AI evaluation",
+      "Computer-control prototype",
+      "Better evidence-based resume"
+    ],
+    "3": [
+      "Specialization chosen",
+      "AI systems depth",
+      "Distributed systems",
+      "AI security",
+      "Flagship AI-OS project",
+      "Public documentation",
+      "Strong internship/research/startup experience",
+      "Meaningful open source",
+      "External network",
+      "Technical publication/talk",
+      "Interview preparation",
+      "Real users/testers",
+      "Mentoring"
+    ],
+    "4": [
+      "Flagship project polished",
+      "External proof",
+      "Strong 3\u20135 project portfolio",
+      "One-page resume",
+      "Interview readiness",
+      "System design",
+      "Early applications",
+      "Startup/research applications",
+      "Network maintained",
+      "Recommendations",
+      "Technical communication",
+      "Four-year retrospective",
+      "Career backup",
+      "Post-graduation plan"
+    ]
+  },
+  "links": [
+    {
+      "title": "Roadmap.sh \u2014 Computer Science",
+      "category": "Fundamentals",
+      "url": "https://roadmap.sh/computer-science",
+      "why": "Coverage checklist for CS fundamentals."
+    },
+    {
+      "title": "Roadmap.sh \u2014 Developer Roadmaps",
+      "category": "Planning",
+      "url": "https://roadmap.sh/roadmaps",
+      "why": "Backend, AI engineer, system design, Linux and related paths."
+    },
+    {
+      "title": "GitHub Skills",
+      "category": "Git",
+      "url": "https://skills.github.com/",
+      "why": "Practice GitHub collaboration hands-on."
+    },
+    {
+      "title": "GitHub Explore",
+      "category": "Open Source",
+      "url": "https://github.com/explore",
+      "why": "Find real projects and communities."
+    },
+    {
+      "title": "GitHub Trending",
+      "category": "Open Source",
+      "url": "https://github.com/trending",
+      "why": "Observe active projects and technologies."
+    },
+    {
+      "title": "Devpost Hackathons",
+      "category": "Hackathons",
+      "url": "https://devpost.com/hackathons?status=open",
+      "why": "Find public hackathons."
+    },
+    {
+      "title": "Major League Hacking Events",
+      "category": "Hackathons",
+      "url": "https://www.mlh.com/seasons/2027/events/",
+      "why": "Student-focused hackathons and events."
+    },
+    {
+      "title": "Kaggle Competitions",
+      "category": "AI Competitions",
+      "url": "https://www.kaggle.com/competitions/",
+      "why": "AI/ML competition practice."
+    },
+    {
+      "title": "ICPC Regionals",
+      "category": "Competitive Programming",
+      "url": "https://icpc.global/regionals/regionals",
+      "why": "University programming competition."
+    },
+    {
+      "title": "CTFtime",
+      "category": "Cybersecurity",
+      "url": "https://ctftime.org/",
+      "why": "Cybersecurity CTF events."
+    },
+    {
+      "title": "Google Developer Groups",
+      "category": "Events",
+      "url": "https://gdg.community.dev/",
+      "why": "Local developer communities and events."
+    },
+    {
+      "title": "IEEE Student Branches",
+      "category": "Community",
+      "url": "https://students.ieee.org/student-branches/",
+      "why": "Technical student communities."
+    },
+    {
+      "title": "Google Research Publications",
+      "category": "Research",
+      "url": "https://research.google/pubs/",
+      "why": "Read real research."
+    },
+    {
+      "title": "Google Summer of Code",
+      "category": "Open Source",
+      "url": "https://summerofcode.withgoogle.com/",
+      "why": "Open-source program; watch annual cycles."
+    },
+    {
+      "title": "Microsoft Students",
+      "category": "Internships",
+      "url": "https://careers.microsoft.com/v2/global/en/students",
+      "why": "Official student/early-career jobs."
+    },
+    {
+      "title": "Amazon University SDE",
+      "category": "Internships",
+      "url": "https://www.amazon.jobs/content/en/career-programs/university/sde",
+      "why": "Official student software-development opportunities."
+    },
+    {
+      "title": "AWS Events",
+      "category": "Cloud",
+      "url": "https://aws.amazon.com/events/",
+      "why": "Cloud and developer events."
+    },
+    {
+      "title": "LeetCode Problemset",
+      "category": "DSA",
+      "url": "https://leetcode.com/problemset/",
+      "why": "Deliberate algorithm practice."
+    },
+    {
+      "title": "Docker Get Started",
+      "category": "DevOps",
+      "url": "https://docs.docker.com/get-started/",
+      "why": "Official Docker fundamentals."
+    },
+    {
+      "title": "arXiv",
+      "category": "Research",
+      "url": "https://arxiv.org/",
+      "why": "Search and read technical papers."
+    }
+  ]
+}
