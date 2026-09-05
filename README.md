@@ -1,71 +1,98 @@
-# ICT → AI Era Career Dashboard — v3
+# ICT → AI Era Career Dashboard v4
 
-## Architecture
+## Verdict on v4
 
-This version keeps the **public template** and **private user state** separated.
+The useful upgrade is an **opportunity engine**, not a fake scraper.
 
-### Public
-`data/public-template.json`
+This version is still static/local-first:
+- public template + discovery-source catalogue are safe to publish
+- personal opportunity/application tracking stays in browser localStorage
+- no third-party credentials are stored
+- no server is required
 
-Contains generic four-year goals, task templates, checklists and public resource links.
+## Opportunity engine
 
-Safe to publish on GitHub.
+Workflow:
 
-### Private
-Browser localStorage key:
+`Discover → Shortlist → Preparing → Applied → Assessment → Interview → Outcome`
 
-`ictAiCareerDashboard.private.v3`
+Each opportunity can track:
+- title
+- type
+- company/organization
+- relevant year
+- deadline
+- follow-up date
+- stage
+- status
+- fit score
+- proof value
+- learning value
+- contact
+- application URL
+- source URL
+- notes / requirements / next action
 
-Contains:
-- personal profile
-- task completion state
-- personal actions
-- projects
-- people/network
-- opportunities
-- proof-of-work
-- weekly reviews
-- private notes/settings
+The app calculates a directional opportunity score and urgency label.
 
-The app does not send this data to a server.
+## Deadline engine
 
-## v3 additions
+- overdue detection
+- 3/7/14 day urgency bands
+- follow-up queue
+- calendar `.ics` export
+- optional browser alert when the app is opened
 
-- Installable PWA assets (`manifest.webmanifest`, `sw.js`)
-- Offline caching when hosted over HTTPS
-- Career-capital dashboard
-- Year scores for directional progress
-- Search/filter for actions
-- Deadline view for personal opportunities
-- Private project / network / opportunity / proof capture forms
-- Weekly review with last-review tracking
-- Public-link capture into private opportunities
-- GPT sync prompt that exposes private data only when the user deliberately copies it
-- Separate private backup import/export
-- Explicit public/private security guidance
+Important limitation: a static browser app cannot reliably run scheduled background scraping across arbitrary third-party sites. v4 therefore uses **source discovery + human verification + private tracking**. A later backend can add scheduled ingestion.
 
-## Deploy
+## GPT workflow
 
-GitHub Pages, Vercel, or Netlify can serve this as a static site.
+The GPT sync dialog generates a prompt with the current private state.
 
-Put the entire folder into a repository and deploy it.
+Recommended workflow:
+1. Copy GPT prompt.
+2. Ask GPT for current opportunities or an improved action plan.
+3. Ask it to return ONLY `private-backup` JSON.
+4. Save the JSON as a file.
+5. Import/merge it.
+6. v4 makes an automatic pre-import backup.
 
-For PWA service workers, use HTTPS hosting (GitHub Pages, Vercel or Netlify), not `file://`.
+The import is merge-based by ID rather than blind replacement.
 
-## Security
+## Public sources currently seeded
 
-Do not commit private backups, API keys, credentials or private contact data to the public repository.
+Discovery sources include Devpost, Major League Hacking, Kaggle, CTFtime, Google Summer of Code, Google Developer Community, IEEE student branches, Microsoft student careers/Explore, Apple student internships, IBM internships, Amazon University SDE, LinkedIn student/intern discovery, arXiv and Papers with Code.
 
-localStorage is local-to-browser storage, not encryption. Anyone with access to the same browser profile/device may potentially inspect it.
+These are discovery sources, not guarantees of eligibility or availability. Verify the actual opportunity before applying.
 
-## Next architectural milestone
+## Deployment
 
-Only after the local-first version proves useful should you add optional authenticated cloud sync.
+GitHub Pages, Vercel or Netlify can host the static site.
 
-Recommended future stack:
-Frontend: static PWA
-Auth: managed authentication
-DB: row-level-secured database
-Sync: per-user records
-Secrets: server-side only
-Optional: encrypted private fields before cloud storage
+For PWA/offline support, deploy over HTTPS.
+
+### GitHub
+
+Copy this folder into a repository and enable Pages.
+
+Do not commit exported private backup JSON.
+
+## Privacy
+
+Private data is stored under localStorage key:
+
+`ictAiCareerDashboard.private.v4`
+
+localStorage is not encryption. Anyone with access to the same browser profile/device may potentially inspect it.
+
+## Next logical milestone
+
+Only after using v4 enough to prove that opportunity tracking is actually valuable should you add:
+
+- authenticated cross-device sync
+- a server-side scheduled scanner
+- RSS/API connectors
+- per-user opportunity matching
+- server-side notification delivery
+
+Do not add those prematurely.

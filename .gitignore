@@ -1,5 +1,5 @@
-# Never commit personal backups or local user data
-ict-ai-career-private-backup.json
+# Private user data — never commit to a public repository
+ict-ai-career-private-backup*.json
 private-backup*.json
 user-data*.json
 *.local.json
@@ -7,7 +7,7 @@ user-data*.json
 .env.*
 !.env.example
 
-# OS/editor
+# Generated/editor files
 .DS_Store
 Thumbs.db
 .vscode/

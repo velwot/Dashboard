@@ -5,241 +5,189 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#111827">
 <link rel="manifest" href="./manifest.webmanifest">
-<title>ICT → AI Era Career Dashboard</title>
+<title>ICT → AI Era Career Dashboard v4</title>
 <style>
-:root{
---bg:#f6f7fb;--panel:#fff;--text:#18202a;--muted:#667085;--line:#e5e7eb;
---accent:#4f46e5;--accent-soft:#eef2ff;--good:#15803d;--good-soft:#ecfdf3;
---warn:#b45309;--warn-soft:#fff7ed;--danger:#b91c1c;--shadow:0 6px 24px rgba(16,24,40,.07)
-}
-*{box-sizing:border-box}
-body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.45}
-button,input,select,textarea{font:inherit}
-button{cursor:pointer}
-.app{display:grid;grid-template-columns:246px 1fr;min-height:100vh}
-aside{background:#111827;color:#fff;padding:20px;position:sticky;top:0;height:100vh}
-.brand{font-size:17px;font-weight:800}.brand-sub{font-size:12px;color:#9ca3af;margin:4px 0 20px}
-nav button{width:100%;text-align:left;border:0;background:transparent;color:#d1d5db;padding:10px 11px;border-radius:9px;margin:2px 0}
-nav button.active,nav button:hover{background:#1f2937;color:#fff}
-.sidebar-foot{position:absolute;bottom:16px;left:20px;right:20px;font-size:11px;color:#9ca3af}
-main{padding:28px;max-width:1450px;width:100%;margin:auto}
-header{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:18px}
-h1{font-size:28px;letter-spacing:-.02em;margin:0 0 6px}h2{font-size:20px;margin:0 0 8px}h3{font-size:15px;margin:0 0 8px}
-p{margin:6px 0;color:var(--muted)}.small{font-size:12px;color:var(--muted)}
-.actions,.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-button.primary,button.ghost,.icon,.chip{border:1px solid var(--line);border-radius:9px;padding:9px 12px;background:#fff;color:var(--text)}
-button.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
-.icon{padding:6px 9px}.chip{padding:7px 9px;font-size:12px}.chip.active{background:var(--accent-soft);border-color:#c7d2fe;color:#3730a3}
-.grid{display:grid;gap:14px}.cards{grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}
-.two{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}.three{grid-template-columns:repeat(auto-fit,minmax(235px,1fr))}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:16px;box-shadow:var(--shadow)}
-.section{margin-top:18px}.stat{font-size:27px;font-weight:800}.stat-label{font-size:12px;color:var(--muted)}
+:root{--bg:#f6f7fb;--panel:#fff;--text:#18202a;--muted:#667085;--line:#e5e7eb;--accent:#4f46e5;--accent2:#eef2ff;--good:#15803d;--goodbg:#ecfdf3;--warn:#b45309;--warnbg:#fff7ed;--danger:#b91c1c;--dangerbg:#fef2f2;--shadow:0 6px 24px rgba(16,24,40,.07)}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.45}
+button,input,select,textarea{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:255px 1fr;min-height:100vh}
+aside{background:#111827;color:#fff;padding:20px;position:sticky;top:0;height:100vh}.brand{font-weight:800;font-size:17px}.brand-sub{font-size:12px;color:#9ca3af;margin:4px 0 20px}nav button{width:100%;text-align:left;border:0;background:transparent;color:#d1d5db;padding:10px 11px;border-radius:9px;margin:2px 0}nav button.active,nav button:hover{background:#1f2937;color:#fff}.side-note{font-size:11px;color:#9ca3af;margin-top:16px}.sidebar-foot{position:absolute;bottom:16px;left:20px;right:20px;font-size:11px;color:#9ca3af}
+main{padding:28px;max-width:1500px;width:100%;margin:auto}header{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:18px}
+h1{font-size:28px;letter-spacing:-.02em;margin:0 0 6px}h2{font-size:20px;margin:0 0 8px}h3{font-size:15px;margin:0 0 8px}p{margin:6px 0;color:var(--muted)}
+.small{font-size:12px;color:var(--muted)}.actions,.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.right{margin-left:auto}
+button.primary,button.ghost,.icon,.chip{border:1px solid var(--line);border-radius:9px;padding:9px 12px;background:#fff;color:var(--text)}button.primary{background:var(--accent);color:#fff;border-color:var(--accent)}.icon{padding:6px 9px}
+.grid{display:grid;gap:14px}.cards{grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}.two{grid-template-columns:repeat(auto-fit,minmax(340px,1fr))}.three{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:16px;box-shadow:var(--shadow)}.section{margin-top:18px}.stat{font-size:27px;font-weight:800}.stat-label{font-size:12px;color:var(--muted)}
 .progress{height:8px;background:#eef0f4;border-radius:999px;overflow:hidden}.progress span{display:block;height:100%;background:var(--accent);border-radius:999px}
-.badge{display:inline-flex;padding:3px 7px;border-radius:999px;font-size:11px;font-weight:700;background:#f3f4f6;color:#475467}
-.badge.good{background:var(--good-soft);color:#166534}.badge.warn{background:var(--warn-soft);color:#9a3412}.badge.danger{background:#fef2f2;color:#991b1b}
-.list{display:flex;flex-direction:column;gap:8px}.item{border:1px solid var(--line);border-radius:10px;padding:12px;background:#fff}
-.item-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.item-title{font-weight:700}
-.item-actions{display:flex;gap:5px}.muted{color:var(--muted)}
-table{width:100%;border-collapse:collapse}th,td{padding:9px 7px;border-bottom:1px solid var(--line);text-align:left;font-size:13px;vertical-align:top}
-th{font-size:12px;color:var(--muted)}input,select,textarea{width:100%;border:1px solid #d0d5dd;border-radius:8px;padding:9px 10px;background:#fff;color:var(--text)}
-textarea{min-height:90px;resize:vertical}label{font-size:12px;font-weight:700;color:#344054;display:block;margin-bottom:5px}
-.form{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}.full{grid-column:1/-1}
-.notice{background:#fffbeb;border:1px solid #fde68a;color:#854d0e;padding:11px;border-radius:10px;font-size:13px}
-.privacy{background:var(--good-soft);border:1px solid #bbf7d0;color:#166534;padding:12px;border-radius:10px;font-size:13px}
-.dangerbox{background:#fef2f2;border:1px solid #fecaca;color:#991b1b;padding:12px;border-radius:10px;font-size:13px}
-.link{color:#4338ca;text-decoration:none}.link:hover{text-decoration:underline}
-.empty{padding:30px;text-align:center;color:var(--muted);border:1px dashed #d0d5dd;border-radius:10px}
-.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}.tab{border:1px solid var(--line);background:#fff;padding:8px 10px;border-radius:8px}.tab.active{background:var(--accent-soft);border-color:#c7d2fe;color:#3730a3;font-weight:700}
-.score{display:flex;align-items:center;gap:8px}.scorebar{flex:1;height:7px;border-radius:999px;background:#eef0f4;overflow:hidden}.scorebar span{display:block;height:100%;background:var(--accent)}
-.timeline{position:relative;padding-left:18px}.timeline:before{content:"";position:absolute;left:4px;top:4px;bottom:4px;width:2px;background:#e5e7eb}
-.timeline-item{position:relative;padding:0 0 15px 16px}.timeline-item:before{content:"";position:absolute;left:-1px;top:6px;width:8px;height:8px;border-radius:50%;background:var(--accent)}
-kbd{font-family:ui-monospace,monospace;font-size:11px;background:#f2f4f7;border:1px solid #e4e7ec;border-radius:5px;padding:2px 5px}
-.modal{position:fixed;inset:0;background:rgba(17,24,39,.45);display:none;align-items:center;justify-content:center;padding:18px;z-index:20}.modal.show{display:flex}
-.modal-box{background:#fff;max-width:720px;width:100%;max-height:90vh;overflow:auto;border-radius:14px;padding:18px;box-shadow:0 16px 60px rgba(0,0,0,.25)}
+.badge{display:inline-flex;padding:3px 7px;border-radius:999px;font-size:11px;font-weight:700;background:#f3f4f6;color:#475467}.badge.good{background:var(--goodbg);color:#166534}.badge.warn{background:var(--warnbg);color:#9a3412}.badge.danger{background:var(--dangerbg);color:#991b1b}
+table{width:100%;border-collapse:collapse}th,td{padding:9px 7px;border-bottom:1px solid var(--line);text-align:left;font-size:13px;vertical-align:top}th{font-size:12px;color:var(--muted)}
+input,select,textarea{width:100%;border:1px solid #d0d5dd;border-radius:8px;padding:9px 10px;background:#fff;color:var(--text)}textarea{min-height:90px;resize:vertical}label{font-size:12px;font-weight:700;color:#344054;display:block;margin-bottom:5px}.form{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:10px}.full{grid-column:1/-1}
+.list{display:flex;flex-direction:column;gap:8px}.item{border:1px solid var(--line);border-radius:10px;padding:12px;background:#fff}.item-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.item-title{font-weight:700}
+.link{color:#4338ca;text-decoration:none}.link:hover{text-decoration:underline}.privacy{background:var(--goodbg);border:1px solid #bbf7d0;color:#166534;padding:12px;border-radius:10px;font-size:13px}.notice{background:#fffbeb;border:1px solid #fde68a;color:#854d0e;padding:11px;border-radius:10px;font-size:13px}.dangerbox{background:var(--dangerbg);border:1px solid #fecaca;color:#991b1b;padding:11px;border-radius:10px;font-size:13px}
+.chip{padding:7px 9px;font-size:12px}.chip.active{background:var(--accent2);border-color:#c7d2fe;color:#3730a3;font-weight:700}.score{display:flex;align-items:center;gap:8px}.scorebar{flex:1;height:7px;border-radius:999px;background:#eef0f4;overflow:hidden}.scorebar span{display:block;height:100%;background:var(--accent)}
+.pipeline{display:grid;grid-template-columns:repeat(6,minmax(170px,1fr));gap:10px;overflow:auto}.lane{background:#f8fafc;border:1px solid var(--line);border-radius:12px;padding:10px;min-height:220px}.lane h3{font-size:13px}.kanban{display:flex;flex-direction:column;gap:7px}.opp-card{background:#fff;border:1px solid var(--line);border-radius:9px;padding:9px}.opp-card:hover{border-color:#c7d2fe}.urgency{font-size:11px;font-weight:700}
+.modal{position:fixed;inset:0;background:rgba(17,24,39,.45);display:none;align-items:center;justify-content:center;padding:18px;z-index:20}.modal.show{display:flex}.modal-box{background:#fff;max-width:760px;width:100%;max-height:92vh;overflow:auto;border-radius:14px;padding:18px;box-shadow:0 16px 60px rgba(0,0,0,.25)}
 .toast{position:fixed;right:18px;bottom:18px;background:#111827;color:#fff;padding:10px 13px;border-radius:9px;display:none;z-index:30}.toast.show{display:block}
-@media(max-width:880px){.app{grid-template-columns:1fr}aside{position:relative;height:auto}.sidebar-foot{position:static;margin-top:12px}main{padding:18px}header{flex-direction:column}.form .full{grid-column:auto}}
+@media(max-width:1050px){.pipeline{grid-template-columns:repeat(3,minmax(180px,1fr));overflow:auto}}@media(max-width:850px){.app{grid-template-columns:1fr}aside{position:relative;height:auto}.sidebar-foot{position:static;margin-top:12px}main{padding:18px}header{flex-direction:column}.full{grid-column:auto}}
 </style>
 </head>
 <body>
 <div class="app">
 <aside>
   <div class="brand">ICT → AI Era</div>
-  <div class="brand-sub">Private career command center</div>
+  <div class="brand-sub">Career + opportunity engine</div>
   <nav id="nav"></nav>
-  <div class="sidebar-foot">Public template + private browser data<br>Installable PWA</div>
+  <div class="side-note">Discovery is public.<br>Tracking is private.</div>
+  <div class="sidebar-foot">v4 · local-first · PWA capable</div>
 </aside>
-
 <main>
 <header>
-  <div>
-    <div class="small" id="today"></div>
-    <h1 id="title">Dashboard</h1>
-    <p id="subtitle">Build capability, proof, relationships and opportunities.</p>
-  </div>
-  <div class="actions">
-    <button class="primary" onclick="openPrivateImport()">Import private</button>
-    <button class="ghost" onclick="exportPrivate()">Export private</button>
-    <button class="ghost" onclick="openGpt()">GPT sync</button>
-  </div>
+  <div><div class="small" id="today"></div><h1 id="title">Dashboard</h1><p id="subtitle">Turn opportunities into actions and outcomes.</p></div>
+  <div class="actions"><button class="primary" onclick="addOpportunity()">+ Opportunity</button><button class="ghost" onclick="exportPrivate()">Export</button><button class="ghost" onclick="openGpt()">GPT sync</button></div>
   <input id="privateFile" type="file" accept=".json,application/json" hidden onchange="importPrivate(event)">
 </header>
 <div id="view"></div>
 </main>
 </div>
-
-<div id="modal" class="modal"><div class="modal-box" id="modalBox"></div></div>
-<div id="toast" class="toast"></div>
+<div id="modal" class="modal"><div id="modalBox" class="modal-box"></div></div><div id="toast" class="toast"></div>
 
 <script>
-const PRIVATE_KEY="ictAiCareerDashboard.private.v3";
-let TEMPLATE={schemaVersion:1,type:"public-template",goals:[],tasks:[],checklist:{},links:[]};
-let PRIVATE={
- schemaVersion:1,type:"private-backup",
- profile:{name:"",degree:"BE ICT",startYear:new Date().getFullYear(),target:"AI Systems / AI Engineering + Systems"},
- taskState:{},tasks:[],projects:[],people:[],opportunities:[],evidence:[],reviews:[],notes:[],
- settings:{focusYear:1,installed:false,lastReview:""}
-};
-let view="dashboard";
-let taskFilter="all";
-let searchTerm="";
+const PRIVATE_KEY="ictAiCareerDashboard.private.v4";
+const DEFAULT_PRIVATE={schemaVersion:1,type:"private-backup",profile:{name:"",degree:"BE ICT",startYear:new Date().getFullYear(),target:"AI Systems / AI Engineering + Systems"},taskState:{},tasks:[],projects:[],people:[],opportunities:[],evidence:[],reviews:[],notes:[],settings:{focusYear:1,lastReview:"",notifications:false}};
+let P=loadPrivate(), T={schemaVersion:1,type:"public-template",goals:[],tasks:[],checklist:{},links:[],sources:[]}, view="dashboard", search="";
+const STAGES=["discovered","shortlisted","preparing","applied","assessment","interview","accepted","rejected","withdrawn"];
+const TASK_STATUS=["todo","done"];
 
-async function boot(){
- loadPrivate();
- try{const res=await fetch("./data/public-template.json",{cache:"no-store"}); if(res.ok) TEMPLATE=await res.json();}catch(e){console.warn(e)}
- if("serviceWorker" in navigator && location.protocol!=="file:"){navigator.serviceWorker.register("./sw.js").catch(()=>{})}
- renderNav(); render();
-}
-function savePrivate(){localStorage.setItem(PRIVATE_KEY,JSON.stringify(PRIVATE))}
-function loadPrivate(){try{const x=JSON.parse(localStorage.getItem(PRIVATE_KEY));if(x)PRIVATE={...PRIVATE,...x}}catch{}}
 function esc(v=""){return String(v).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
 function uid(p){return p+Math.random().toString(36).slice(2,9)}
-function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2200)}
+function save(){localStorage.setItem(PRIVATE_KEY,JSON.stringify(P))}
+function loadPrivate(){try{const x=JSON.parse(localStorage.getItem(PRIVATE_KEY));return {...DEFAULT_PRIVATE,...x,profile:{...DEFAULT_PRIVATE.profile,...(x?.profile||{})},settings:{...DEFAULT_PRIVATE.settings,...(x?.settings||{})}}}catch{return structuredClone(DEFAULT_PRIVATE)}}
+async function boot(){
+ try{const r=await fetch("./data/public-template.json",{cache:"no-store"});if(r.ok)T=await r.json()}catch(e){console.warn("Public template unavailable",e)}
+ if("serviceWorker" in navigator && location.protocol!=="file:")navigator.serviceWorker.register("./sw.js").catch(()=>{});
+ renderNav();render();deadlinePulse();
+}
+function toast(m){const x=document.getElementById("toast");x.textContent=m;x.classList.add("show");setTimeout(()=>x.classList.remove("show"),2400)}
+function modal(title,body,actions=""){document.getElementById("modalBox").innerHTML=`<div class="item-head"><h2>${title}</h2><button class="icon" onclick="closeModal()">×</button></div>${body}<div class="actions" style="margin-top:12px">${actions}</div>`;document.getElementById("modal").classList.add("show")}
 function closeModal(){document.getElementById("modal").classList.remove("show")}
-function modal(title,body,actions=""){document.getElementById("modalBox").innerHTML=`<div class="item-head"><div><h2>${title}</h2></div><button class="icon" onclick="closeModal()">×</button></div>${body}<div class="actions" style="margin-top:12px">${actions}</div>`;document.getElementById("modal").classList.add("show")}
 function setView(v){view=v;renderNav();render()}
-function renderNav(){
- const items=[["dashboard","Dashboard"],["roadmap","4-Year Roadmap"],["actions","My Actions"],["projects","My Projects"],["network","My Network"],["opportunities","My Opportunities"],["proof","My Proof"],["updates","Updates"],["review","Weekly Review"],["data","Private Data"]];
- document.getElementById("nav").innerHTML=items.map(([id,n])=>`<button class="${view===id?'active':''}" onclick="setView('${id}')">${n}</button>`).join("");
-}
-function render(){
- document.getElementById("today").textContent=new Date().toLocaleDateString(undefined,{weekday:"long",year:"numeric",month:"long",day:"numeric"});
- const subtitles={dashboard:"Build capability, proof, relationships and opportunities.",roadmap:"The four-year operating system for becoming an unusually strong student.",actions:"Execute the highest-value work instead of collecting tutorials.",projects:"Projects are evidence. Capture what you built and what happened.",network:"Track relationships that you build through real interactions.",opportunities:"Collect worthwhile doors: internships, hackathons, research and competitions.",proof:"Keep external evidence of your ability.",updates:"Public sources. Save worthwhile opportunities privately.",review:"Weekly reflection prevents drift and fake productivity.",data:"Your private information lives here—not in the public repository."};
- document.getElementById("title").textContent=({dashboard:"Dashboard",roadmap:"4-Year Roadmap",actions:"My Actions",projects:"My Projects",network:"My Network",opportunities:"My Opportunities",proof:"My Proof",updates:"Updates",review:"Weekly Review",data:"Private Data"})[view];
- document.getElementById("subtitle").textContent=subtitles[view];
- const fn={dashboard,roadmap,actions,projects,network,opportunities,proof,updates,review,data}[view];document.getElementById("view").innerHTML=fn();
-}
-function stat(label,val){return `<div class="card"><div class="stat">${val}</div><div class="stat-label">${label}</div></div>`}
-function mergedTasks(){
- const base=TEMPLATE.tasks||[];
- const personal=PRIVATE.tasks||[];
- return [...base,...personal.filter(p=>!base.some(b=>b.id===p.id))].map(t=>{
-   const s=PRIVATE.taskState[t.id];
-   return s?{...t,...s}:t;
- });
-}
-function completedTasks(){return mergedTasks().filter(t=>t.status==="done").length}
-function yearScore(y){
- const tasks=mergedTasks().filter(t=>Number(t.year)===y), done=tasks.filter(t=>t.status==="done").length;
- const project=PRIVATE.projects.filter(p=>Number(p.year)===y).length;
- const people=y===1?Math.min(PRIVATE.people.length,3):Math.min(PRIVATE.people.length,10);
- return Math.min(100,Math.round((tasks.length?done/tasks.length*.65:0)+(project?15:0)+(people?Math.min(20,people*2):0)));
-}
+function renderNav(){const items=[["dashboard","Dashboard"],["discover","Discover"],["opportunities","Opportunity Pipeline"],["deadlines","Deadlines"],["actions","My Actions"],["projects","Projects"],["network","Network"],["proof","Proof"],["review","Review"],["data","Private Data"]];document.getElementById("nav").innerHTML=items.map(([id,n])=>`<button class="${view===id?"active":""}" onclick="setView('${id}')">${n}</button>`).join("")}
+function render(){document.getElementById("today").textContent=new Date().toLocaleDateString(undefined,{weekday:"long",year:"numeric",month:"long",day:"numeric"});const meta={dashboard:["Dashboard","Turn opportunities into actions and outcomes."],discover:["Discover","Public sources for internships, hackathons, research, competitions and events."],opportunities:["Opportunity Pipeline","Track every serious opportunity from discovery to outcome."],deadlines:["Deadlines","Prevent missed applications and forgotten follow-ups."],actions:["My Actions","Execution tasks across the four-year roadmap."],projects:["Projects","Proof-producing work, not tutorial collections."],network:["Network","Real relationships and follow-ups."],proof:["Proof","External evidence of your ability."],review:["Review","Weekly reflection and opportunity-cost control."],data:["Private Data","Your personal data stays in this browser unless you explicitly export it."]}[view];document.getElementById("title").textContent=meta[0];document.getElementById("subtitle").textContent=meta[1];({dashboard,discover,opportunities,deadlines,actions,projects,network,proof,review,data})[view] && (document.getElementById("view").innerHTML=({dashboard,discover,opportunities,deadlines,actions,projects,network,proof,review,data})[view]())}
+function daysUntil(d){if(!d)return null;const a=new Date();a.setHours(0,0,0,0);const b=new Date(d+"T00:00:00");return Math.ceil((b-a)/86400000)}
+function urgency(o){const d=daysUntil(o.deadline);if(d===null)return {label:"No deadline",cls:""};if(d<0)return {label:"Overdue",cls:"danger"};if(d<=3)return {label:"≤3 days",cls:"danger"};if(d<=7)return {label:"≤7 days",cls:"warn"};if(d<=14)return {label:"≤14 days",cls:"warn"};return {label:`${d} days`,cls:"good"}}
+function fitScore(o){let s=0;s+=Number(o.fit||0);s+=Number(o.proofValue||0);s+=Number(o.learningValue||0);if(o.deadline){const d=daysUntil(o.deadline);if(d!==null&&d>=0&&d<=14)s+=5}return Math.min(100,Math.round(s/3))}
 function dashboard(){
- const ts=mergedTasks(),done=completedTasks(),pct=Math.round(done/(ts.length||1)*100),y=Number(PRIVATE.settings.focusYear||1);
- const high=ts.filter(t=>t.status!=="done"&&t.priority==="high").slice(0,6);
- const upcoming=[...PRIVATE.opportunities].filter(o=>o.status!=="closed"&&o.date).sort((a,b)=>(a.date||"").localeCompare(b.date||"")).slice(0,5);
- const dimension=[
-   ["Capability",PRIVATE.projects.length>0?Math.min(100,30+PRIVATE.projects.length*10):10],
-   ["Proof",Math.min(100,PRIVATE.evidence.length*12)],
-   ["Relationships",Math.min(100,PRIVATE.people.length*4)],
-   ["Experience",Math.min(100,PRIVATE.opportunities.filter(o=>o.status==="done").length*20)],
-   ["Opportunity exposure",Math.min(100,PRIVATE.opportunities.length*8)],
-   ["Communication",Math.min(100,PRIVATE.reviews.length*5+(PRIVATE.evidence.filter(e=>/talk|presentation/i.test(e.type||"")).length*15))]
- ];
- return `<div class="privacy"><b>Private-by-default:</b> the public GitHub repo contains the template. Personal data stays in this browser's <code>${PRIVATE_KEY}</code> storage unless you explicitly export it.</div>
- <div class="section grid cards">${stat("Overall task completion",pct+"%")}${stat("Projects",PRIVATE.projects.length)}${stat("People",PRIVATE.people.length)}${stat("Open opportunities",PRIVATE.opportunities.filter(o=>o.status!=="closed").length)}${stat("Proof items",PRIVATE.evidence.length)}${stat("Reviews",PRIVATE.reviews.length)}</div>
- <div class="section grid two">
-  <div class="card"><div class="item-head"><h2>Year ${y} score</h2><span class="badge">${yearScore(y)}/100</span></div><p class="small">This is a directional signal, not a grade.</p><div class="progress"><span style="width:${yearScore(y)}%"></span></div><div class="row" style="margin-top:10px">${[1,2,3,4].map(n=>`<button class="chip ${n===y?'active':''}" onclick="PRIVATE.settings.focusYear=${n};savePrivate();render()">Year ${n}</button>`).join("")}</div></div>
-  <div class="card"><h2>Career-capital dimensions</h2>${dimension.map(([n,v])=>`<div class="score"><span class="small" style="width:110px">${n}</span><div class="scorebar"><span style="width:${v}%"></span></div><span class="small">${v}</span></div>`).join("")}</div>
- </div>
- <div class="section grid two"><div class="card"><div class="item-head"><h2>Next high-value actions</h2><button class="ghost" onclick="setView('actions')">All actions</button></div><div class="list">${high.map(taskRow).join("")||'<div class="empty">No high-priority actions. Add work that creates capability, proof, relationships or opportunity.</div>'}</div></div>
- <div class="card"><h2>Upcoming deadlines</h2><div class="list">${upcoming.map(o=>`<div class="item"><div class="item-title">${esc(o.title)}</div><div class="small">${esc(o.type)} · ${esc(o.date)}</div><a class="link small" href="${esc(o.link||"#")}" target="_blank" rel="noreferrer">Open</a></div>`).join("")||'<div class="empty">No dated opportunities yet.</div>'}</div></div></div>`;
+ const open=P.opportunities.filter(o=>o.status!=="closed"), overdue=open.filter(o=>daysUntil(o.deadline)<0), due=open.filter(o=>daysUntil(o.deadline)!==null&&daysUntil(o.deadline)>=0&&daysUntil(o.deadline)<=14), follow=open.filter(o=>o.followUpDate&&daysUntil(o.followUpDate)<=3&&daysUntil(o.followUpDate)>=0);
+ const ts=mergedTasks(),done=ts.filter(t=>t.status==="done").length,pct=Math.round(done/(ts.length||1)*100);
+ const top=open.slice().sort((a,b)=>fitScore(b)-fitScore(a)).slice(0,5);
+ return `<div class="privacy"><b>Opportunity engine model:</b> Discover → Shortlist → Prepare → Apply → Interview → Outcome. This static version uses public sources and private tracking; it does not pretend to continuously scrape third-party sites.</div>
+ <div class="section grid cards">${stat("Open opportunities",open.length)}${stat("Due ≤14 days",due.length)}${stat("Overdue",overdue.length)}${stat("Follow-ups ≤3 days",follow.length)}${stat("Task completion",pct+"%")}${stat("Proof items",P.evidence.length)}</div>
+ <div class="section grid two"><div class="card"><div class="item-head"><h2>Attention now</h2><button class="ghost" onclick="setView('deadlines')">See deadlines</button></div>
+ ${overdue.length?`<div class="dangerbox"><b>${overdue.length} overdue</b> — resolve, withdraw or update them.</div>`:""}<div class="list" style="margin-top:8px">${[...due,...follow].slice(0,7).map(oppRow).join("")||'<div class="empty">Nothing urgent. Good.</div>'}</div></div>
+ <div class="card"><h2>Best current bets</h2><p class="small">Score is a decision aid, not a prediction. Fit + proof value + learning value.</p><div class="list">${top.map(o=>oppRow(o,true)).join("")||'<div class="empty">Add serious opportunities from Discover.</div>'}</div></div></div>
+ <div class="section card"><h2>What makes this useful</h2><div class="grid three"><div class="item"><b>Deadline engine</b><p class="small">Urgency labels, overdue detection and follow-up queue.</p></div><div class="item"><b>Application CRM</b><p class="small">Keep stage, contact, notes, application URL and outcome in one record.</p></div><div class="item"><b>Career compounding</b><p class="small">Tie opportunities to projects, skills and proof rather than applying randomly.</p></div></div></div>`;
 }
-function taskRow(t){
- return `<div class="item"><div class="item-head"><div><div class="item-title">${esc(t.title)}</div><div class="small">${esc(t.category)} · Year ${t.year} · ${esc(t.priority||"")}${t.due?` · due ${esc(t.due)}`:""}</div></div><div class="item-actions"><span class="badge ${t.status==="done"?"good":t.priority==="high"?"warn":""}">${esc(t.status||"todo")}</span><button class="icon" onclick="toggleTask('${t.id}')">${t.status==="done"?"↩":"✓"}</button></div></div>${t.link?`<div class="small"><a class="link" target="_blank" rel="noreferrer" href="${esc(t.link)}">Open resource</a></div>`:""}</div>`;
+function stat(l,v){return `<div class="card"><div class="stat">${v}</div><div class="stat-label">${l}</div></div>`}
+function mergedTasks(){return [...(T.tasks||[]),...(P.tasks||[]).filter(x=>!(T.tasks||[]).some(t=>t.id===x.id))].map(t=>P.taskState[t.id]?{...t,...P.taskState[t.id]}:t)}
+function oppRow(o,compact=false){const u=urgency(o);const score=fitScore(o);return `<div class="item"><div class="item-head"><div><div class="item-title">${esc(o.title)}</div><div class="small">${esc(o.type||"")} ${o.company?`· ${esc(o.company)}`:""} ${o.deadline?`· deadline ${esc(o.deadline)}`:""} ${o.followUpDate?`· follow-up ${esc(o.followUpDate)}`:""}</div></div><div class="row"><span class="badge ${u.cls}">${u.label}</span><span class="badge">${score}/100</span><button class="icon" onclick="editOpportunity('${o.id}')">✎</button></div></div><div class="small">${esc(o.stage||"discovered")} · ${esc(o.status||"open")}${o.contact?` · contact: ${esc(o.contact)}`:""}</div>${o.applyUrl&&!compact?`<a class="link small" target="_blank" rel="noreferrer" href="${esc(o.applyUrl)}">Application</a>`:""}</div>`}
+function discover(){
+ const cats=[...new Set((T.sources||[]).map(s=>s.kind))];
+ return `<div class="privacy"><b>Discovery is intentionally human-in-the-loop.</b> Click a source, inspect the actual opportunity, then save only worthwhile items. This avoids a noisy feed and avoids pretending a static site has guaranteed live scraping.</div>
+ <div class="section form"><div><label>Search sources</label><input id="srcSearch" value="${esc(search)}" oninput="search=this.value;render()"></div><div><label>Category</label><select id="srcCat" onchange="window.srcCat=this.value;render()"><option value="all">All</option>${cats.map(c=>`<option ${window.srcCat===c?"selected":""}>${esc(c)}</option>`).join("")}</select></div></div>
+ <div class="section grid two">${(T.sources||[]).filter(s=>(window.srcCat&&window.srcCat!=="all"?s.kind===window.srcCat:true)&&(!search||(s.title+" "+s.kind+" "+s.region).toLowerCase().includes(search.toLowerCase()))).map(s=>`<div class="card"><div class="item-head"><div><span class="badge">${esc(s.kind)}</span><h3 style="margin-top:8px">${esc(s.title)}</h3></div><span class="small">${esc(s.cadence)}</span></div><p>${esc(s.notes)}</p><div class="small">${esc(s.region)}</div><div class="actions" style="margin-top:9px"><a class="ghost" style="text-decoration:none" target="_blank" rel="noreferrer" href="${esc(s.url)}">Open source</a><button class="ghost" onclick="captureSource('${encodeURIComponent(JSON.stringify(s))}')">Save opportunity</button></div></div>`).join("")}</div>
+ <div class="section card"><h2>Weekly discovery rule</h2><p>Spend a bounded block of time scanning sources. Add only opportunities that fit your year, direction, skill level or network goals. Then convert each accepted opportunity into a deadline and next action.</p></div>`;
 }
-function roadmap(){
- return [1,2,3,4].map(y=>`<div class="section card"><div class="item-head"><div><h2>Year ${y}</h2><p class="small">${TEMPLATE.goals.filter(g=>g.year===y).map(g=>esc(g.title)).join(" · ")}</p></div><span class="badge">${yearScore(y)}/100</span></div><div class="progress"><span style="width:${yearScore(y)}%"></span></div><div class="grid three" style="margin-top:12px">${(TEMPLATE.checklist[String(y)]||[]).map(x=>`<div class="item"><div class="small">□ ${esc(x)}</div></div>`).join("")}</div></div>`).join("");
-}
-function actions(){
- let ts=mergedTasks();
- if(searchTerm.trim())ts=ts.filter(t=>(t.title+" "+t.category+" "+t.year).toLowerCase().includes(searchTerm.toLowerCase()));
- if(taskFilter!=="all")ts=ts.filter(t=>t.category===taskFilter);
- const cats=[...new Set(mergedTasks().map(t=>t.category).filter(Boolean))];
- return `<div class="card"><div class="form"><div><label>Search</label><input value="${esc(searchTerm)}" oninput="searchTerm=this.value;render()"></div><div><label>Category</label><select onchange="taskFilter=this.value;render()"><option value="all">All</option>${cats.map(c=>`<option ${taskFilter===c?"selected":""}>${esc(c)}</option>`).join("")}</select></div></div><div class="actions" style="margin-top:10px"><button class="primary" onclick="addPersonalTask()">+ Add personal action</button><button class="ghost" onclick="searchTerm='';taskFilter='all';render()">Clear filters</button></div></div><div class="section list">${ts.map(taskRow).join("")}</div>`;
-}
-function toggleTask(id){PRIVATE.taskState[id]=PRIVATE.taskState[id]||{};PRIVATE.taskState[id].status=PRIVATE.taskState[id].status==="done"?"todo":"done";savePrivate();render();toast("Saved privately")}
-function addPersonalTask(){
- modal("New private action",`<div class="form"><div class="full"><label>Title</label><input id="mtitle"></div><div><label>Category</label><input id="mcat" value="Personal"></div><div><label>Year</label><select id="myear"><option>1</option><option>2</option><option>3</option><option>4</option></select></div><div><label>Priority</label><select id="mpri"><option>high</option><option selected>medium</option><option>low</option></select></div><div><label>Due date</label><input id="mdue" type="date"></div><div class="full"><label>Link</label><input id="mlink"></div></div>`,`<button class="primary" onclick="savePersonalTask()">Add</button>`);
-}
-function savePersonalTask(){
- const t={id:uid("u"),title:document.getElementById("mtitle").value.trim(),category:document.getElementById("mcat").value||"Personal",year:Number(document.getElementById("myear").value),due:document.getElementById("mdue").value,status:"todo",priority:document.getElementById("mpri").value,link:document.getElementById("mlink").value.trim()};
- if(!t.title)return alert("Title required");PRIVATE.tasks.push(t);savePrivate();closeModal();render();toast("Action added");
-}
-function projects(){
- return `<div class="card"><button class="primary" onclick="addProject()">+ Add private project</button><p class="small">A project should answer: problem, stack, what you personally did, measurable result and public evidence.</p></div><div class="section grid two">${PRIVATE.projects.map(p=>`<div class="card"><div class="item-head"><div><h3>${esc(p.title)}</h3><span class="badge">Year ${p.year}</span></div><button class="icon" onclick="removePrivate('projects','${p.id}')">×</button></div><p>${esc(p.problem||"")}</p><div class="small"><b>Stack:</b> ${esc(p.stack||"-")}</div><div class="small"><b>Your role:</b> ${esc(p.role||"-")}</div><div class="small"><b>Result:</b> ${esc(p.result||"-")}</div>${p.link?`<div style="margin-top:7px"><a class="link" href="${esc(p.link)}" target="_blank" rel="noreferrer">Public evidence</a></div>`:""}</div>`).join("")||'<div class="empty">No projects yet.</div>'}</div>`;
-}
-function addProject(){
- modal("New private project",`<div class="form"><div class="full"><label>Title</label><input id="pt"></div><div class="full"><label>Problem</label><textarea id="pp"></textarea></div><div><label>Stack</label><input id="ps"></div><div><label>Year</label><select id="py"><option>1</option><option>2</option><option>3</option><option>4</option></select></div><div><label>Status</label><select id="pst"><option>active</option><option>complete</option></select></div><div class="full"><label>Your role</label><textarea id="pr"></textarea></div><div class="full"><label>Result / proof</label><textarea id="pres"></textarea></div><div class="full"><label>GitHub/demo link</label><input id="pl"></div></div>`,`<button class="primary" onclick="saveProject()">Add project</button>`);
-}
-function saveProject(){const p={id:uid("p"),title:document.getElementById("pt").value.trim(),problem:document.getElementById("pp").value,stack:document.getElementById("ps").value,year:Number(document.getElementById("py").value),status:document.getElementById("pst").value,role:document.getElementById("pr").value,result:document.getElementById("pres").value,link:document.getElementById("pl").value.trim()};if(!p.title)return alert("Title required");PRIVATE.projects.push(p);savePrivate();closeModal();render();toast("Project added")}
-function network(){
- return `<div class="card"><button class="primary" onclick="addPerson()">+ Add person</button><p class="small">Store only information you are comfortable keeping locally. Follow up because you can contribute, learn or stay connected—not because you need something immediately.</p></div><div class="section card"><table><tr><th>Name</th><th>Role</th><th>Met</th><th>Last</th><th>Next</th><th></th></tr>${PRIVATE.people.map(p=>`<tr><td><b>${esc(p.name)}</b></td><td>${esc(p.role||"")}</td><td>${esc(p.met||"")}</td><td>${esc(p.last||"")}</td><td>${esc(p.next||"")}</td><td><button class="icon" onclick="removePrivate('people','${p.id}')">×</button></td></tr>`).join("")||'<tr><td colspan="6" class="muted">No people tracked.</td></tr>'}</table></div>`;
-}
-function addPerson(){modal("New private relationship",`<div class="form"><div><label>Name</label><input id="nn"></div><div><label>Role / college / company</label><input id="nr"></div><div class="full"><label>How did you meet?</label><input id="nm"></div><div class="full"><label>Useful next step</label><textarea id="nx"></textarea></div><div class="full"><label>Private notes</label><textarea id="nnotes"></textarea></div></div>`,`<button class="primary" onclick="savePerson()">Add</button>`)}
-function savePerson(){const p={id:uid("n"),name:document.getElementById("nn").value.trim(),role:document.getElementById("nr").value,met:document.getElementById("nm").value,last:new Date().toISOString().slice(0,10),next:document.getElementById("nx").value,notes:document.getElementById("nnotes").value};if(!p.name)return alert("Name required");PRIVATE.people.push(p);savePrivate();closeModal();render();toast("Relationship saved locally")}
+function captureSource(s){const x=JSON.parse(decodeURIComponent(s));addOpportunity({...x,title:x.title,type:x.kind,sourceUrl:x.url})}
 function opportunities(){
- return `<div class="card"><button class="primary" onclick="addOpportunity()">+ Add private opportunity</button><p class="small">Add only worthwhile opportunities. The public Updates page is for discovery; this page is your personal shortlist and deadline tracker.</p></div><div class="section list">${PRIVATE.opportunities.map(o=>`<div class="item"><div class="item-head"><div><div class="item-title">${esc(o.title)}</div><div class="small">${esc(o.type)} · ${esc(o.date||"No date")} · ${esc(o.status)}</div></div><button class="icon" onclick="removePrivate('opportunities','${o.id}')">×</button></div><p>${esc(o.notes||"")}</p>${o.link?`<a class="link small" target="_blank" rel="noreferrer" href="${esc(o.link)}">Open official/source link</a>`:""}</div>`).join("")||'<div class="empty">No personal opportunities tracked.</div>'}</div>`;
+ let a=P.opportunities.slice();a.sort((x,y)=>fitScore(y)-fitScore(x));const stages=STAGES;
+ const q=search.toLowerCase();if(q)a=a.filter(o=>(o.title+" "+o.company+" "+o.type+" "+o.stage+" "+o.status).toLowerCase().includes(q));
+ return `<div class="card"><div class="form"><div><label>Search opportunities</label><input value="${esc(search)}" oninput="search=this.value;render()"></div><div><label>Stage</label><select onchange="window.oppStage=this.value;render()"><option value="all">All stages</option>${stages.map(s=>`<option ${window.oppStage===s?"selected":""}>${s}</option>`).join("")}</select></div><div><label>Status</label><select onchange="window.oppStatus=this.value;render()"><option value="all">All</option><option ${window.oppStatus==="open"?"selected":""}>open</option><option ${window.oppStatus==="done"?"selected":""}>done</option><option ${window.oppStatus==="closed"?"selected":""}>closed</option></select></div></div><div class="actions" style="margin-top:10px"><button class="primary" onclick="addOpportunity()">+ Add opportunity</button><button class="ghost" onclick="search='';window.oppStage='all';window.oppStatus='all';render()">Clear filters</button></div></div>
+ <div class="section pipeline">${stages.map(stage=>{const list=a.filter(o=>(window.oppStage&&window.oppStage!=="all"?o.stage===window.oppStage:true)&&(window.oppStatus&&window.oppStatus!=="all"?o.status===window.oppStatus:true)&&o.stage===stage);return `<div class="lane"><div class="item-head"><h3>${stage}</h3><span class="badge">${list.length}</span></div><div class="kanban">${list.map(o=>`<div class="opp-card"><div class="item-head"><div><b>${esc(o.title)}</b><div class="small">${esc(o.company||"")}</div></div><button class="icon" onclick="editOpportunity('${o.id}')">✎</button></div><div class="row" style="margin-top:7px"><span class="badge ${urgency(o).cls}">${urgency(o).label}</span><span class="badge">${fitScore(o)}/100</span></div>${o.deadline?`<div class="small" style="margin-top:5px">Deadline: ${esc(o.deadline)}</div>`:""}</div>`).join("")||'<div class="small muted">Empty</div>'}</div></div>`}).join("")}</div>`;
 }
-function addOpportunity(){modal("New private opportunity",`<div class="form"><div class="full"><label>Title</label><input id="ot"></div><div><label>Type</label><select id="otyp"><option>Internship</option><option>Hackathon</option><option>Research</option><option>Competition</option><option>Fellowship</option><option>Event</option><option>Other</option></select></div><div><label>Date / deadline</label><input id="od" type="date"></div><div class="full"><label>Official/source URL</label><input id="ol"></div><div class="full"><label>Why it matters</label><textarea id="on"></textarea></div><div><label>Status</label><select id="os"><option>open</option><option>done</option><option>closed</option></select></div></div>`,`<button class="primary" onclick="saveOpportunity()">Add</button>`)}
-function saveOpportunity(){const o={id:uid("o"),title:document.getElementById("ot").value.trim(),type:document.getElementById("otyp").value,date:document.getElementById("od").value,link:document.getElementById("ol").value.trim(),notes:document.getElementById("on").value,status:document.getElementById("os").value};if(!o.title)return alert("Title required");PRIVATE.opportunities.push(o);savePrivate();closeModal();render()}
-function proof(){
- return `<div class="card"><button class="primary" onclick="addProof()">+ Add evidence</button><p class="small">Evidence is independently checkable: deployed work, GitHub contribution, competition result, internship, research, users, publication, talk, award or recommendation.</p></div><div class="section grid two">${PRIVATE.evidence.map(e=>`<div class="card"><div class="item-head"><div><h3>${esc(e.title)}</h3><span class="badge">${esc(e.type)}</span></div><button class="icon" onclick="removePrivate('evidence','${e.id}')">×</button></div><p>${esc(e.result||"")}</p>${e.link?`<a class="link small" href="${esc(e.link)}" target="_blank" rel="noreferrer">Evidence link</a>`:""}</div>`).join("")||'<div class="empty">No evidence yet.</div>'}</div>`;
+function addOpportunity(prefill={}){
+ modal("Opportunity record",opportunityForm({...prefill,id:prefill.id||""}),`<button class="primary" onclick="saveOpportunityForm()">Save opportunity</button>`);
 }
-function addProof(){modal("New proof item",`<div class="form"><div class="full"><label>Title</label><input id="et"></div><div><label>Type</label><select id="ety"><option>project</option><option>open source</option><option>competition</option><option>internship</option><option>research</option><option>talk</option><option>award</option><option>other</option></select></div><div><label>Date</label><input id="ed" type="date"></div><div class="full"><label>What proves it?</label><textarea id="er"></textarea></div><div class="full"><label>Evidence URL</label><input id="el"></div></div>`,`<button class="primary" onclick="saveProof()">Add</button>`)}
-function saveProof(){const e={id:uid("e"),title:document.getElementById("et").value.trim(),type:document.getElementById("ety").value,result:document.getElementById("er").value,link:document.getElementById("el").value.trim(),date:document.getElementById("ed").value};if(!e.title)return alert("Title required");PRIVATE.evidence.push(e);savePrivate();closeModal();render()}
-function updates(){
- return `<div class="privacy"><b>Public layer.</b> The links below are generic discovery sources. Your personal opportunity shortlist and notes remain private.</div><div class="section grid two">${(TEMPLATE.links||[]).map(l=>`<div class="card"><span class="badge">${esc(l.category||"Update")}</span><h3>${esc(l.title)}</h3><p>${esc(l.why||"")}</p><a class="link small" href="${esc(l.url)}" target="_blank" rel="noreferrer">${esc(l.url)}</a><div style="margin-top:9px"><button class="ghost" onclick="captureLink('${encodeURIComponent(JSON.stringify(l))}')">Save to my opportunities</button></div></div>`).join("")}</div><div class="section card"><h2>Use updates intelligently</h2><p>Scan opportunities weekly, not continuously. Convert worthwhile discoveries into concrete applications and deadlines.</p></div>`;
+function opportunityForm(o){
+ return `<input type="hidden" id="oid" value="${esc(o.id||"")}"><div class="form">
+ <div class="full"><label>Title</label><input id="otitle" value="${esc(o.title||"")}"></div>
+ <div><label>Type</label><select id="otype">${["Internship","Hackathon","Research","Competition","Fellowship","Event","Open Source","Scholarship","Other"].map(x=>`<option ${o.type===x?"selected":""}>${x}</option>`).join("")}</select></div>
+ <div><label>Company / organization</label><input id="ocompany" value="${esc(o.company||"")}"></div>
+ <div><label>Year relevant</label><select id="oyear">${[1,2,3,4].map(y=>`<option ${Number(o.year||1)===y?"selected":""}>${y}</option>`).join("")}</select></div>
+ <div><label>Deadline</label><input id="odeadline" type="date" value="${esc(o.deadline||"")}"></div>
+ <div><label>Follow-up date</label><input id="ofollow" type="date" value="${esc(o.followUpDate||"")}"></div>
+ <div><label>Stage</label><select id="ostage">${STAGES.map(s=>`<option ${o.stage===s?"selected":""}>${s}</option>`).join("")}</select></div>
+ <div><label>Status</label><select id="ostatus">${["open","done","closed"].map(s=>`<option ${o.status===s?"selected":""}>${s}</option>`).join("")}</select></div>
+ <div><label>Fit (0–100)</label><input id="ofit" type="number" min="0" max="100" value="${Number(o.fit||0)}"></div>
+ <div><label>Proof value (0–100)</label><input id="oproof" type="number" min="0" max="100" value="${Number(o.proofValue||0)}"></div>
+ <div><label>Learning value (0–100)</label><input id="olearn" type="number" min="0" max="100" value="${Number(o.learningValue||0)}"></div>
+ <div><label>Contact</label><input id="ocontact" value="${esc(o.contact||"")}"></div>
+ <div class="full"><label>Application URL</label><input id="oapply" value="${esc(o.applyUrl||"")}"></div>
+ <div class="full"><label>Source / discovery URL</label><input id="osource" value="${esc(o.sourceUrl||"")}"></div>
+ <div class="full"><label>Notes / eligibility / requirements / next action</label><textarea id="onotes">${esc(o.notes||"")}</textarea></div>
+ </div>`;
 }
-function captureLink(s){const l=JSON.parse(decodeURIComponent(s));modal("Save opportunity source",`<div class="form"><div class="full"><label>Title</label><input id="ct" value="${esc(l.title)}"></div><div><label>Type</label><input id="cct" value="${esc(l.category)}"></div><div><label>Date/deadline</label><input id="cd" type="date"></div><div class="full"><label>Why it matters</label><textarea id="cn">${esc(l.why||"")}</textarea></div><div class="full"><label>URL</label><input id="cl" value="${esc(l.url)}"></div></div>`,`<button class="primary" onclick="saveCaptured()">Save</button>`)}
-function saveCaptured(){const o={id:uid("o"),title:document.getElementById("ct").value,type:document.getElementById("cct").value,date:document.getElementById("cd").value,link:document.getElementById("cl").value,notes:document.getElementById("cn").value,status:"open"};PRIVATE.opportunities.push(o);savePrivate();closeModal();setView("opportunities");toast("Saved privately")}
-function review(){
- const last=PRIVATE.settings.lastReview||"Never";
- return `<div class="card"><h2>Weekly review</h2><p>Last review: <b>${esc(last)}</b>. Use five questions and keep the answer short.</p><div class="form"><div class="full"><label>1. What did I actually ship/finish?</label><textarea id="q1"></textarea></div><div class="full"><label>2. What created the most capability?</label><textarea id="q2"></textarea></div><div class="full"><label>3. What created proof, relationships or opportunity?</label><textarea id="q3"></textarea></div><div class="full"><label>4. What was fake productivity?</label><textarea id="q4"></textarea></div><div class="full"><label>5. What are next week's three highest-value actions?</label><textarea id="q5"></textarea></div></div><button class="primary" onclick="saveReview()">Save weekly review</button></div><div class="section list">${PRIVATE.reviews.slice().reverse().map(r=>`<div class="item"><div class="item-head"><b>${esc(r.date)}</b><button class="icon" onclick="removePrivate('reviews','${r.id}')">×</button></div><p><b>Shipped:</b> ${esc(r.q1)}</p><p><b>Capability:</b> ${esc(r.q2)}</p><p><b>Proof/network:</b> ${esc(r.q3)}</p><p><b>Fake productivity:</b> ${esc(r.q4)}</p><p><b>Next:</b> ${esc(r.q5)}</p></div>`).join("")||'<div class="empty">No reviews yet.</div>'}</div>`;
+function saveOpportunityForm(){
+ const o={id:document.getElementById("oid").value||uid("o"),title:document.getElementById("otitle").value.trim(),type:document.getElementById("otype").value,company:document.getElementById("ocompany").value.trim(),year:Number(document.getElementById("oyear").value),deadline:document.getElementById("odeadline").value,followUpDate:document.getElementById("ofollow").value,stage:document.getElementById("ostage").value,status:document.getElementById("ostatus").value,fit:Number(document.getElementById("ofit").value)||0,proofValue:Number(document.getElementById("oproof").value)||0,learningValue:Number(document.getElementById("olearn").value)||0,contact:document.getElementById("ocontact").value.trim(),applyUrl:document.getElementById("oapply").value.trim(),sourceUrl:document.getElementById("osource").value.trim(),notes:document.getElementById("onotes").value};
+ if(!o.title)return alert("Title required");
+ const idx=P.opportunities.findIndex(x=>x.id===o.id);if(idx>=0)P.opportunities[idx]=o;else P.opportunities.push(o);
+ save();closeModal();render();toast("Opportunity saved privately");
 }
-function saveReview(){const q=[1,2,3,4,5].map(i=>document.getElementById("q"+i).value.trim());if(!q.some(Boolean))return alert("Write at least one answer.");const date=new Date().toISOString().slice(0,10);PRIVATE.reviews.push({id:uid("r"),date,q1:q[0],q2:q[1],q3:q[2],q4:q[3],q5:q[4]});PRIVATE.settings.lastReview=date;savePrivate();render();toast("Review saved")}
-function data(){
- return `<div class="grid two"><div class="card"><h2>Privacy architecture</h2><div class="privacy"><b>Public:</b> roadmap, generic tasks, checklists and links in <code>data/public-template.json</code>.</div><div class="privacy" style="margin-top:8px"><b>Private:</b> your profile, progress, projects, people, opportunities, evidence, reviews and notes in browser localStorage.</div><div class="dangerbox" style="margin-top:8px"><b>Never commit:</b> exported private backups, contact data, private notes, application records, credentials or API keys.</div></div>
- <div class="card"><h2>Private profile</h2><div class="form"><div><label>Name</label><input id="pn" value="${esc(PRIVATE.profile.name)}"></div><div><label>Degree</label><input id="pd" value="${esc(PRIVATE.profile.degree)}"></div><div><label>Start year</label><input id="py" type="number" value="${esc(PRIVATE.profile.startYear)}"></div><div class="full"><label>Target</label><input id="ptarget" value="${esc(PRIVATE.profile.target)}"></div></div><button class="primary" onclick="saveProfile()">Save private profile</button></div></div>
- <div class="section card"><h2>Backups and migration</h2><div class="actions"><button class="primary" onclick="exportPrivate()">Export private backup</button><button class="ghost" onclick="openPrivateImport()">Import private backup</button><button class="ghost" onclick="openGpt()">GPT sync</button><button class="ghost" onclick="resetPrivate()">Reset private data</button></div><p class="small">Keep exported backups somewhere private. A public GitHub repository is not a suitable place for them.</p></div>`;
+function editOpportunity(id){const o=P.opportunities.find(x=>x.id===id);if(o)addOpportunity(o)}
+function deadlines(){
+ const a=P.opportunities.slice().filter(o=>o.status!=="closed").sort((x,y)=>{
+   const dx=daysUntil(x.deadline);const dy=daysUntil(y.deadline);return (dx??99999)-(dy??99999)
+ });
+ const follow=a.filter(o=>o.followUpDate).sort((x,y)=>(x.followUpDate||"").localeCompare(y.followUpDate||""));
+ return `<div class="grid two"><div class="card"><h2>Deadlines</h2>${a.map(o=>oppRow(o)).join("")||'<div class="empty">No active opportunities.</div>'}</div><div class="card"><h2>Follow-up queue</h2>${follow.map(o=>`<div class="item"><div class="item-head"><div><b>${esc(o.title)}</b><div class="small">${esc(o.contact||"No contact recorded")} · ${esc(o.followUpDate)}</div></div><button class="icon" onclick="editOpportunity('${o.id}')">✎</button></div><div class="row" style="margin-top:6px"><span class="badge ${urgency({deadline:o.followUpDate}).cls}">${urgency({deadline:o.followUpDate}).label}</span></div></div>`).join("")||'<div class="empty">No scheduled follow-ups.</div>'}</div></div>
+ <div class="section card"><h2>Calendar export</h2><p class="small">Export active opportunity deadlines and follow-ups as an <code>.ics</code> calendar file. Your calendar receives only what you explicitly export.</p><div class="actions"><button class="primary" onclick="exportCalendar()">Export opportunity calendar</button><button class="ghost" onclick="requestNotifications()">Enable browser alerts</button></div></div>`;
 }
-function saveProfile(){PRIVATE.profile.name=document.getElementById("pn").value.trim();PRIVATE.profile.degree=document.getElementById("pd").value.trim();PRIVATE.profile.startYear=Number(document.getElementById("py").value)||new Date().getFullYear();PRIVATE.profile.target=document.getElementById("ptarget").value.trim();savePrivate();render();toast("Private profile saved")}
-function removePrivate(c,id){if(!confirm("Delete this private item?"))return;PRIVATE[c]=PRIVATE[c].filter(x=>x.id!==id);savePrivate();render()}
-function resetPrivate(){if(!confirm("Reset ALL private data? Export a backup first."))return;localStorage.removeItem(PRIVATE_KEY);location.reload()}
-function addOpportunityDummy(){}
-function exportPrivate(){downloadJson(PRIVATE,"ict-ai-career-private-backup.json")}
-function downloadJson(obj,name){const b=new Blob([JSON.stringify(obj,null,2)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
-function openPrivateImport(){document.getElementById("privateFile").click()}
-function importPrivate(ev){const f=ev.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const x=JSON.parse(r.result);if(x.schemaVersion!==1||x.type!=="private-backup")throw new Error("Not a private-backup JSON.");PRIVATE={...PRIVATE,...x};savePrivate();render();toast("Private backup imported");}catch(e){alert("Import failed: "+e.message)}ev.target.value=""};r.readAsText(f)}
+function exportCalendar(){
+ const evs=[];P.opportunities.filter(o=>o.status!=="closed").forEach(o=>{if(o.deadline)evs.push(icsEvent(o.title+" — deadline",o.deadline,`Opportunity: ${o.title}\nStage: ${o.stage||""}\nApplication: ${o.applyUrl||o.sourceUrl||""}`));if(o.followUpDate)evs.push(icsEvent(o.title+" — follow-up",o.followUpDate,`Follow-up for: ${o.title}\nContact: ${o.contact||""}`))});
+ if(!evs.length)return toast("No dates to export");
+ const ics=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//ICT Career Dashboard//EN","CALSCALE:GREGORIAN",...evs,"END:VCALENDAR"].join("\r\n");download(ics,"ict-career-opportunities.ics","text/calendar");toast("Calendar exported");
+}
+function icsEvent(summary,date,desc){const day=date.replaceAll("-","");return ["BEGIN:VEVENT",`UID:${uid("ev")}`,`DTSTAMP:${new Date().toISOString().replace(/[-:]/g,"").replace(/\\.\\d{3}Z$/,"Z")}`,`DTSTART;VALUE=DATE:${day}`,`SUMMARY:${icsEsc(summary)}`,`DESCRIPTION:${icsEsc(desc)}`,"END:VEVENT"].join("\r\n")}
+function icsEsc(s){return String(s).replace(/\\/g,"\\\\").replace(/;/g,"\\;").replace(/,/g,"\\,").replace(/\n/g,"\\n")}
+function actions(){
+ const ts=mergedTasks().filter(t=>t.status!=="done"&&Number(t.year||1)===Number(P.settings.focusYear||1));
+ return `<div class="card"><div class="actions"><button class="primary" onclick="addPersonalTask()">+ Personal action</button><button class="ghost" onclick="setView('roadmap')">View roadmap</button></div><p class="small">Showing unfinished actions for Year ${Number(P.settings.focusYear||1)}. Template actions are public; your completion state is private.</p></div><div class="section list">${ts.map(taskRow).join("")||'<div class="empty">No unfinished actions for this year.</div>'}</div>`;
+}
+function taskRow(t){return `<div class="item"><div class="item-head"><div><div class="item-title">${esc(t.title)}</div><div class="small">${esc(t.category)} · Year ${t.year} · ${esc(t.priority||"")}</div></div><button class="icon" onclick="toggleTask('${t.id}')">✓</button></div>${t.link?`<a class="link small" target="_blank" rel="noreferrer" href="${esc(t.link)}">Open resource</a>`:""}</div>`}
+function addPersonalTask(){const year=P.settings.focusYear||1;modal("Personal action",`<div class="form"><div class="full"><label>Title</label><input id="mt"></div><div><label>Category</label><input id="mc" value="Career"></div><div><label>Year</label><select id="my">${[1,2,3,4].map(y=>`<option ${y===year?"selected":""}>${y}</option>`).join("")}</select></div><div><label>Priority</label><select id="mp"><option>high</option><option selected>medium</option><option>low</option></select></div><div><label>Due</label><input id="md" type="date"></div><div class="full"><label>Link</label><input id="ml"></div></div>`,`<button class="primary" onclick="savePersonalTask()">Add</button>`)}
+function savePersonalTask(){const t={id:uid("t"),title:document.getElementById("mt").value.trim(),category:document.getElementById("mc").value,year:Number(document.getElementById("my").value),priority:document.getElementById("mp").value,due:document.getElementById("md").value,status:"todo",link:document.getElementById("ml").value.trim()};if(!t.title)return alert("Title required");P.tasks.push(t);save();closeModal();render()}
+function toggleTask(id){P.taskState[id]=P.taskState[id]||{};P.taskState[id].status=P.taskState[id].status==="done"?"todo":"done";save();render();toast("Progress saved privately")}
+function projects(){return `<div class="card"><button class="primary" onclick="addProject()">+ Project</button><p class="small">Capture problem, stack, your contribution, results and evidence.</p></div><div class="section grid two">${P.projects.map(p=>`<div class="card"><div class="item-head"><div><h3>${esc(p.title)}</h3><span class="badge">Year ${p.year}</span></div><button class="icon" onclick="removePrivate('projects','${p.id}')">×</button></div><p>${esc(p.problem||"")}</p><div class="small"><b>Stack:</b> ${esc(p.stack||"-")}</div><div class="small"><b>Your role:</b> ${esc(p.role||"-")}</div><div class="small"><b>Result:</b> ${esc(p.result||"-")}</div>${p.link?`<a class="link small" target="_blank" rel="noreferrer" href="${esc(p.link)}">Proof</a>`:""}</div>`).join("")||'<div class="empty">No projects yet.</div>'}</div>`}
+function addProject(){modal("New project",`<div class="form"><div class="full"><label>Title</label><input id="pt"></div><div class="full"><label>Problem</label><textarea id="pp"></textarea></div><div><label>Stack</label><input id="ps"></div><div><label>Year</label><select id="pyr">${[1,2,3,4].map(y=>`<option>${y}</option>`).join("")}</select></div><div class="full"><label>Your role</label><textarea id="prole"></textarea></div><div class="full"><label>Result / proof</label><textarea id="pres"></textarea></div><div class="full"><label>GitHub/demo</label><input id="plink"></div></div>`,`<button class="primary" onclick="saveProject()">Add</button>`)}
+function saveProject(){const p={id:uid("p"),title:document.getElementById("pt").value.trim(),problem:document.getElementById("pp").value,stack:document.getElementById("ps").value,year:Number(document.getElementById("pyr").value),status:"active",role:document.getElementById("prole").value,result:document.getElementById("pres").value,link:document.getElementById("plink").value.trim()};if(!p.title)return alert("Title required");P.projects.push(p);save();closeModal();render()}
+function network(){return `<div class="card"><button class="primary" onclick="addPerson()">+ Person</button><p class="small">Store only information you are comfortable keeping locally.</p></div><div class="section card"><table><tr><th>Name</th><th>Role</th><th>Met</th><th>Last</th><th>Next</th><th></th></tr>${P.people.map(p=>`<tr><td><b>${esc(p.name)}</b></td><td>${esc(p.role||"")}</td><td>${esc(p.met||"")}</td><td>${esc(p.last||"")}</td><td>${esc(p.next||"")}</td><td><button class="icon" onclick="removePrivate('people','${p.id}')">×</button></td></tr>`).join("")||'<tr><td colspan="6" class="small">No relationships recorded.</td></tr>'}</table></div>`}
+function addPerson(){modal("Private relationship",`<div class="form"><div><label>Name</label><input id="nn"></div><div><label>Role / college / company</label><input id="nr"></div><div class="full"><label>How met</label><input id="nm"></div><div class="full"><label>Next useful step</label><textarea id="nx"></textarea></div><div class="full"><label>Private notes</label><textarea id="nnotes"></textarea></div></div>`,`<button class="primary" onclick="savePerson()">Add</button>`)}
+function savePerson(){const p={id:uid("n"),name:document.getElementById("nn").value.trim(),role:document.getElementById("nr").value,met:document.getElementById("nm").value,last:new Date().toISOString().slice(0,10),next:document.getElementById("nx").value,notes:document.getElementById("nnotes").value};if(!p.name)return alert("Name required");P.people.push(p);save();closeModal();render()}
+function proof(){return `<div class="card"><button class="primary" onclick="addProof()">+ Proof</button><p class="small">Evidence: project, internship, open source, competition, research, users, talk, award, recommendation.</p></div><div class="section grid two">${P.evidence.map(e=>`<div class="card"><div class="item-head"><div><h3>${esc(e.title)}</h3><span class="badge">${esc(e.type)}</span></div><button class="icon" onclick="removePrivate('evidence','${e.id}')">×</button></div><p>${esc(e.result||"")}</p>${e.link?`<a class="link small" target="_blank" rel="noreferrer" href="${esc(e.link)}">Evidence</a>`:""}</div>`).join("")||'<div class="empty">No proof items yet.</div>'}</div>`}
+function addProof(){modal("Proof item",`<div class="form"><div class="full"><label>Title</label><input id="et"></div><div><label>Type</label><select id="ety"><option>project</option><option>internship</option><option>open source</option><option>competition</option><option>research</option><option>talk</option><option>award</option></select></div><div><label>Date</label><input id="ed" type="date"></div><div class="full"><label>Result</label><textarea id="er"></textarea></div><div class="full"><label>Evidence URL</label><input id="el"></div></div>`,`<button class="primary" onclick="saveProof()">Add</button>`)}
+function saveProof(){const e={id:uid("e"),title:document.getElementById("et").value.trim(),type:document.getElementById("ety").value,result:document.getElementById("er").value,link:document.getElementById("el").value,date:document.getElementById("ed").value};if(!e.title)return alert("Title required");P.evidence.push(e);save();closeModal();render()}
+function review(){return `<div class="card"><h2>Weekly review</h2><p>Last review: ${esc(P.settings.lastReview||"Never")}</p><div class="form"><div class="full"><label>What did I ship/finish?</label><textarea id="rq1"></textarea></div><div class="full"><label>What created capability?</label><textarea id="rq2"></textarea></div><div class="full"><label>What created proof, relationship or opportunity?</label><textarea id="rq3"></textarea></div><div class="full"><label>What was fake productivity?</label><textarea id="rq4"></textarea></div><div class="full"><label>What are next week's 3 highest-value actions?</label><textarea id="rq5"></textarea></div></div><button class="primary" onclick="saveReview()">Save review</button></div><div class="section list">${P.reviews.slice().reverse().map(r=>`<div class="item"><div class="item-head"><b>${esc(r.date)}</b><button class="icon" onclick="removePrivate('reviews','${r.id}')">×</button></div><p><b>Shipped:</b> ${esc(r.q1)}</p><p><b>Capability:</b> ${esc(r.q2)}</p><p><b>Proof/network:</b> ${esc(r.q3)}</p><p><b>Fake productivity:</b> ${esc(r.q4)}</p><p><b>Next:</b> ${esc(r.q5)}</p></div>`).join("")||'<div class="empty">No reviews yet.</div>'}</div>`}
+function saveReview(){const q=[1,2,3,4,5].map(i=>document.getElementById("rq"+i).value.trim());if(!q.some(Boolean))return alert("Write at least one answer.");const d=new Date().toISOString().slice(0,10);P.reviews.push({id:uid("r"),date:d,q1:q[0],q2:q[1],q3:q[2],q4:q[3],q5:q[4]});P.settings.lastReview=d;save();render();toast("Review saved")}
+function data(){return `<div class="grid two"><div class="card"><h2>Privacy model</h2><div class="privacy"><b>Public:</b> <code>data/public-template.json</code> — generic roadmap and discovery sources.</div><div class="privacy" style="margin-top:8px"><b>Private:</b> browser localStorage — applications, people, progress, reviews, projects and notes.</div><div class="dangerbox" style="margin-top:8px"><b>Never commit:</b> exported private backups, private contact data, credentials or API keys.</div></div><div class="card"><h2>Private profile</h2><div class="form"><div><label>Name</label><input id="dn" value="${esc(P.profile.name)}"></div><div><label>Degree</label><input id="dd" value="${esc(P.profile.degree)}"></div><div><label>Start year</label><input id="ds" type="number" value="${esc(P.profile.startYear)}"></div><div class="full"><label>Target</label><input id="dt" value="${esc(P.profile.target)}"></div></div><button class="primary" onclick="saveProfile()">Save profile</button></div></div><div class="section card"><h2>Backup / migration</h2><div class="actions"><button class="primary" onclick="exportPrivate()">Export private JSON</button><button class="ghost" onclick="document.getElementById('privateFile').click()">Import / merge private JSON</button><button class="ghost" onclick="openGpt()">GPT sync</button><button class="ghost" onclick="resetPrivate()">Reset private state</button></div><p class="small">Import is merge-based when IDs exist; it creates a safety backup before changing local data.</p></div>`}
+function saveProfile(){P.profile.name=document.getElementById("dn").value.trim();P.profile.degree=document.getElementById("dd").value.trim();P.profile.startYear=Number(document.getElementById("ds").value)||new Date().getFullYear();P.profile.target=document.getElementById("dt").value.trim();save();render();toast("Profile saved locally")}
+function removePrivate(c,id){if(!confirm("Delete this private item?"))return;P[c]=P[c].filter(x=>x.id!==id);save();render()}
+function resetPrivate(){if(!confirm("Reset all private data? Export first if you need a backup."))return;localStorage.removeItem(PRIVATE_KEY);location.reload()}
+function download(text,name,type){const b=new Blob([text],{type:type||"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+function exportPrivate(){download(JSON.stringify(P,null,2),"ict-ai-career-private-backup-v4.json")}
+function importPrivate(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const x=JSON.parse(r.result);if(x.schemaVersion!==1||x.type!=="private-backup")throw new Error("Expected schemaVersion 1 + type private-backup.");download(JSON.stringify(P,null,2),"ict-ai-career-pre-import-backup.json");P=mergePrivate(P,x);save();render();toast("Private data merged safely")}catch(err){alert("Import failed: "+err.message)}e.target.value=""};r.readAsText(f)}
+function mergePrivate(a,b){
+ const out={...a,...b,profile:{...a.profile,...(b.profile||{})},settings:{...a.settings,...(b.settings||{})}};
+ for(const c of ["tasks","projects","people","opportunities","evidence","reviews","notes"]){
+   const map=new Map((a[c]||[]).map(x=>[x.id,x]));for(const x of (b[c]||[]))map.set(x.id,{...(map.get(x.id)||{}),...x});out[c]=[...map.values()];
+ }
+ out.taskState={...(a.taskState||{}),...(b.taskState||{})};return out;
+}
 function openGpt(){
- const safe={schemaVersion:1,type:"private-backup",profile:PRIVATE.profile,taskState:PRIVATE.taskState,tasks:PRIVATE.tasks,projects:PRIVATE.projects,people:PRIVATE.people,opportunities:PRIVATE.opportunities,evidence:PRIVATE.evidence,reviews:PRIVATE.reviews,notes:PRIVATE.notes,settings:PRIVATE.settings};
- const prompt=`I use the local web app "ICT → AI Era Career Dashboard". I want a structured update to my private career dashboard. Return ONLY valid JSON with schemaVersion:1 and type:"private-backup". Preserve IDs. Do not invent personal facts. Focus on the highest-value actions for becoming an exceptional BE ICT student in the AI era: fundamentals, projects, hackathons, events, networking, professors, alumni, internships, open source, research, competitions, communication, proof of work, opportunity cost and avoiding fake productivity. You may add/update tasks, projects, opportunities, evidence and reviews. For current opportunities, use official URLs and exact deadlines when verifiable. Here is my current private data:\n\n${JSON.stringify(safe,null,2)}`;
- modal("GPT sync",`<p>Copy your current private state into GPT, ask for improvements/current opportunities, then paste the returned JSON into a file and use <b>Import private</b>.</p><textarea id="gpttext" style="min-height:330px">${esc(prompt)}</textarea><div class="notice" style="margin-top:10px">Anything you paste into GPT is sent to that GPT service. Do not include secrets. Keep sensitive contact details minimal.</div>`,`<button class="primary" onclick="navigator.clipboard?.writeText(document.getElementById('gpttext').value);toast('GPT prompt copied');closeModal()">Copy prompt</button>`);
+ const payload={schemaVersion:1,type:"private-backup",profile:P.profile,taskState:P.taskState,tasks:P.tasks,projects:P.projects,people:P.people,opportunities:P.opportunities,evidence:P.evidence,reviews:P.reviews,notes:P.notes,settings:P.settings};
+ const prompt=`I use "ICT → AI Era Career Dashboard v4". Return ONLY valid JSON with schemaVersion:1 and type:"private-backup". Preserve existing IDs. Do not invent personal facts. Merge/update rather than deleting. Focus on highest-value career moves for a BE ICT student: CS fundamentals, building, hackathons, events, professors, alumni, internships, open source, research, competitions, communication, proof of work and opportunity cost. For opportunities use fields: {id,title,type,company,year,deadline,followUpDate,stage,status,fit,proofValue,learningValue,contact,applyUrl,sourceUrl,notes}. stage must be one of discovered, shortlisted, preparing, applied, assessment, interview, accepted, rejected, withdrawn. status must be open, done or closed. For current opportunities, verify official URLs and exact deadlines before including them. Do not expose secrets. Current private dashboard state follows:\n\n${JSON.stringify(payload,null,2)}`;
+ modal("GPT sync",`<p>Copy this prompt into GPT. Ask GPT for an update or current opportunity shortlist. Save its JSON reply as a file, then choose <b>Import / merge private JSON</b>.</p><textarea style="min-height:350px" id="gptprompt">${esc(prompt)}</textarea><div class="notice" style="margin-top:10px">Anything you paste into GPT leaves this browser. Do not include passwords, API keys, sensitive credentials or unnecessary private contact details.</div>`,`<button class="primary" onclick="navigator.clipboard?.writeText(document.getElementById('gptprompt').value);toast('GPT prompt copied');closeModal()">Copy prompt</button>`);
 }
-function handleInstall(){
- if(location.protocol==="file:") toast("Open via GitHub Pages/Vercel/Netlify to enable PWA installation.");
- else toast("Use your browser's Install App option if available.");
-}
+async function requestNotifications(){if(!("Notification" in window))return toast("Notifications are not supported.");const p=await Notification.requestPermission();P.settings.notifications=p==="granted";save();if(p==="granted"){notifyUrgent();toast("Browser alerts enabled")}else toast("Permission not granted")}
+function notifyUrgent(){if(!P.settings.notifications||!("Notification" in window)||Notification.permission!=="granted")return;const urgent=P.opportunities.filter(o=>o.status!=="closed"&&daysUntil(o.deadline)!==null&&daysUntil(o.deadline)<=3);if(urgent.length)new Notification("ICT Career Dashboard", {body:`${urgent.length} opportunity deadline(s) are due within 3 days.`})}
+function deadlinePulse(){if(P.opportunities.length){const overdue=P.opportunities.filter(o=>o.status!=="closed"&&daysUntil(o.deadline)<0).length;if(overdue)toast(`${overdue} opportunity deadline(s) overdue`);notifyUrgent()}}
 boot();
 </script>
 </body>

@@ -679,124 +679,231 @@
   },
   "links": [
     {
-      "title": "Roadmap.sh \u2014 Computer Science",
-      "category": "Fundamentals",
-      "url": "https://roadmap.sh/computer-science",
-      "why": "Coverage checklist for CS fundamentals."
-    },
-    {
-      "title": "Roadmap.sh \u2014 Developer Roadmaps",
-      "category": "Planning",
-      "url": "https://roadmap.sh/roadmaps",
-      "why": "Backend, AI engineer, system design, Linux and related paths."
-    },
-    {
-      "title": "GitHub Skills",
-      "category": "Git",
-      "url": "https://skills.github.com/",
-      "why": "Practice GitHub collaboration hands-on."
-    },
-    {
-      "title": "GitHub Explore",
-      "category": "Open Source",
-      "url": "https://github.com/explore",
-      "why": "Find real projects and communities."
-    },
-    {
-      "title": "GitHub Trending",
-      "category": "Open Source",
-      "url": "https://github.com/trending",
-      "why": "Observe active projects and technologies."
-    },
-    {
       "title": "Devpost Hackathons",
-      "category": "Hackathons",
+      "category": "Hackathon",
       "url": "https://devpost.com/hackathons?status=open",
-      "why": "Find public hackathons."
+      "why": "Public hackathon discovery. Use filters to identify beginner-friendly and AI/software events."
     },
     {
-      "title": "Major League Hacking Events",
-      "category": "Hackathons",
+      "title": "Major League Hacking",
+      "category": "Hackathon",
       "url": "https://www.mlh.com/seasons/2027/events/",
-      "why": "Student-focused hackathons and events."
+      "why": "Student-focused hackathons and developer events."
     },
     {
       "title": "Kaggle Competitions",
-      "category": "AI Competitions",
+      "category": "Competition",
       "url": "https://www.kaggle.com/competitions/",
-      "why": "AI/ML competition practice."
+      "why": "AI/ML competitions and hackathons."
     },
     {
-      "title": "ICPC Regionals",
-      "category": "Competitive Programming",
-      "url": "https://icpc.global/regionals/regionals",
-      "why": "University programming competition."
-    },
-    {
-      "title": "CTFtime",
-      "category": "Cybersecurity",
-      "url": "https://ctftime.org/",
-      "why": "Cybersecurity CTF events."
-    },
-    {
-      "title": "Google Developer Groups",
-      "category": "Events",
-      "url": "https://gdg.community.dev/",
-      "why": "Local developer communities and events."
-    },
-    {
-      "title": "IEEE Student Branches",
-      "category": "Community",
-      "url": "https://students.ieee.org/student-branches/",
-      "why": "Technical student communities."
-    },
-    {
-      "title": "Google Research Publications",
-      "category": "Research",
-      "url": "https://research.google/pubs/",
-      "why": "Read real research."
+      "title": "CTFtime Upcoming Events",
+      "category": "Competition",
+      "url": "https://ctftime.org/event/list/upcoming",
+      "why": "Cybersecurity CTF discovery."
     },
     {
       "title": "Google Summer of Code",
       "category": "Open Source",
       "url": "https://summerofcode.withgoogle.com/",
-      "why": "Open-source program; watch annual cycles."
+      "why": "Open-source development program; monitor organizations before the annual application period."
     },
     {
-      "title": "Microsoft Students",
-      "category": "Internships",
+      "title": "Google Developer Community",
+      "category": "Event",
+      "url": "https://developers.google.com/community",
+      "why": "Developer communities, GDGs, campus groups and events."
+    },
+    {
+      "title": "IEEE Student Branches",
+      "category": "Community",
+      "url": "https://students.ieee.org/student-branches/",
+      "why": "Student technical communities and activities."
+    },
+    {
+      "title": "Microsoft Early in Profession",
+      "category": "Internship",
       "url": "https://careers.microsoft.com/v2/global/en/students",
-      "why": "Official student/early-career jobs."
+      "why": "Student internships and early-career programs."
+    },
+    {
+      "title": "Microsoft Explore",
+      "category": "Internship",
+      "url": "https://careers.microsoft.com/v2/global/en/exploremicrosoft",
+      "why": "First/second-year student software internship program."
+    },
+    {
+      "title": "Apple Student Internships",
+      "category": "Internship",
+      "url": "https://jobs.apple.com/en-in/search?team=internships-STDNT-INTRN",
+      "why": "Official Apple student internship search."
+    },
+    {
+      "title": "IBM Internships",
+      "category": "Internship",
+      "url": "https://www.ibm.com/careers/internships",
+      "why": "Official IBM internship opportunities and guidance."
     },
     {
       "title": "Amazon University SDE",
-      "category": "Internships",
+      "category": "Internship",
       "url": "https://www.amazon.jobs/content/en/career-programs/university/sde",
-      "why": "Official student software-development opportunities."
+      "why": "Student and graduate software-development opportunities."
     },
     {
-      "title": "AWS Events",
-      "category": "Cloud",
-      "url": "https://aws.amazon.com/events/",
-      "why": "Cloud and developer events."
-    },
-    {
-      "title": "LeetCode Problemset",
-      "category": "DSA",
-      "url": "https://leetcode.com/problemset/",
-      "why": "Deliberate algorithm practice."
-    },
-    {
-      "title": "Docker Get Started",
-      "category": "DevOps",
-      "url": "https://docs.docker.com/get-started/",
-      "why": "Official Docker fundamentals."
+      "title": "LinkedIn Student/Intern Search",
+      "category": "Internship",
+      "url": "https://www.linkedin.com/jobs/student-intern-jobs",
+      "why": "Broad job discovery. Verify any opportunity on the employer's official site before applying."
     },
     {
       "title": "arXiv",
       "category": "Research",
       "url": "https://arxiv.org/",
-      "why": "Search and read technical papers."
+      "why": "Research paper discovery; use after learning research fundamentals."
+    },
+    {
+      "title": "Papers with Code",
+      "category": "Research",
+      "url": "https://paperswithcode.com/",
+      "why": "Connect research papers to code, datasets and benchmarks."
+    }
+  ],
+  "sources": [
+    {
+      "id": "src-devpost",
+      "title": "Devpost Hackathons",
+      "kind": "Hackathon",
+      "url": "https://devpost.com/hackathons?status=open",
+      "region": "Global",
+      "cadence": "Frequent",
+      "notes": "Public hackathon discovery. Use filters to identify beginner-friendly and AI/software events."
+    },
+    {
+      "id": "src-mlh",
+      "title": "Major League Hacking",
+      "kind": "Hackathon",
+      "url": "https://www.mlh.com/seasons/2027/events/",
+      "region": "Global",
+      "cadence": "Seasonal",
+      "notes": "Student-focused hackathons and developer events."
+    },
+    {
+      "id": "src-kaggle",
+      "title": "Kaggle Competitions",
+      "kind": "Competition",
+      "url": "https://www.kaggle.com/competitions/",
+      "region": "Global",
+      "cadence": "Continuous",
+      "notes": "AI/ML competitions and hackathons."
+    },
+    {
+      "id": "src-ctftime",
+      "title": "CTFtime Upcoming Events",
+      "kind": "Competition",
+      "url": "https://ctftime.org/event/list/upcoming",
+      "region": "Global",
+      "cadence": "Continuous",
+      "notes": "Cybersecurity CTF discovery."
+    },
+    {
+      "id": "src-gsoc",
+      "title": "Google Summer of Code",
+      "kind": "Open Source",
+      "url": "https://summerofcode.withgoogle.com/",
+      "region": "Global",
+      "cadence": "Annual",
+      "notes": "Open-source development program; monitor organizations before the annual application period."
+    },
+    {
+      "id": "src-gdg",
+      "title": "Google Developer Community",
+      "kind": "Event",
+      "url": "https://developers.google.com/community",
+      "region": "Global",
+      "cadence": "Frequent",
+      "notes": "Developer communities, GDGs, campus groups and events."
+    },
+    {
+      "id": "src-ieee",
+      "title": "IEEE Student Branches",
+      "kind": "Community",
+      "url": "https://students.ieee.org/student-branches/",
+      "region": "Global",
+      "cadence": "Continuous",
+      "notes": "Student technical communities and activities."
+    },
+    {
+      "id": "src-ms",
+      "title": "Microsoft Early in Profession",
+      "kind": "Internship",
+      "url": "https://careers.microsoft.com/v2/global/en/students",
+      "region": "Global",
+      "cadence": "Seasonal/Continuous",
+      "notes": "Student internships and early-career programs."
+    },
+    {
+      "id": "src-msexplore",
+      "title": "Microsoft Explore",
+      "kind": "Internship",
+      "url": "https://careers.microsoft.com/v2/global/en/exploremicrosoft",
+      "region": "India/US",
+      "cadence": "Seasonal",
+      "notes": "First/second-year student software internship program."
+    },
+    {
+      "id": "src-apple",
+      "title": "Apple Student Internships",
+      "kind": "Internship",
+      "url": "https://jobs.apple.com/en-in/search?team=internships-STDNT-INTRN",
+      "region": "India",
+      "cadence": "Continuous",
+      "notes": "Official Apple student internship search."
+    },
+    {
+      "id": "src-ibm",
+      "title": "IBM Internships",
+      "kind": "Internship",
+      "url": "https://www.ibm.com/careers/internships",
+      "region": "Global",
+      "cadence": "Continuous",
+      "notes": "Official IBM internship opportunities and guidance."
+    },
+    {
+      "id": "src-amazon",
+      "title": "Amazon University SDE",
+      "kind": "Internship",
+      "url": "https://www.amazon.jobs/content/en/career-programs/university/sde",
+      "region": "Global",
+      "cadence": "Seasonal/Continuous",
+      "notes": "Student and graduate software-development opportunities."
+    },
+    {
+      "id": "src-linkedin",
+      "title": "LinkedIn Student/Intern Search",
+      "kind": "Internship",
+      "url": "https://www.linkedin.com/jobs/student-intern-jobs",
+      "region": "Global",
+      "cadence": "Continuous",
+      "notes": "Broad job discovery. Verify any opportunity on the employer's official site before applying."
+    },
+    {
+      "id": "src-arxiv",
+      "title": "arXiv",
+      "kind": "Research",
+      "url": "https://arxiv.org/",
+      "region": "Global",
+      "cadence": "Continuous",
+      "notes": "Research paper discovery; use after learning research fundamentals."
+    },
+    {
+      "id": "src-pwc",
+      "title": "Papers with Code",
+      "kind": "Research",
+      "url": "https://paperswithcode.com/",
+      "region": "Global",
+      "cadence": "Continuous",
+      "notes": "Connect research papers to code, datasets and benchmarks."
     }
   ]
 }

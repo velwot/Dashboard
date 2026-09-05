@@ -17,7 +17,7 @@
   "notes": [],
   "settings": {
     "focusYear": 1,
-    "installed": false,
-    "lastReview": ""
+    "lastReview": "",
+    "notifications": false
   }
 }
