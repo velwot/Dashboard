@@ -301,6 +301,14 @@ async function flushCloudSync() {
     window.__cloudSyncStatus = "synced";
     window.__cloudSyncError = null;
 
+    const cloudStatus =
+      document.getElementById("cloudStatus");
+
+    if (cloudStatus) {
+      cloudStatus.textContent = "Cloud: synced";
+      cloudStatus.className = "badge good";
+    }
+
     if (typeof window.toast === "function") {
       window.toast("Saved to cloud");
     }
@@ -310,6 +318,14 @@ async function flushCloudSync() {
 
     window.__cloudSyncStatus = "error";
     window.__cloudSyncError = error;
+
+      const cloudStatus =
+        document.getElementById("cloudStatus");
+
+      if (cloudStatus) {
+        cloudStatus.textContent = "Cloud: error";
+        cloudStatus.className = "badge danger";
+      }
 
     if (typeof window.toast === "function") {
       window.toast("Cloud sync failed — local backup kept");

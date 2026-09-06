@@ -2,6 +2,7 @@ import {
   getCurrentUser,
   signIn,
   signUp,
+  signOut,
   watchAuth,
 } from "./auth.js";
 
@@ -314,8 +315,23 @@ async function startDashboard() {
       return;
     }
 
-
     window.__careerUser = user;
+
+    window.__signOut = async function () {
+      try {
+        await signOut();
+      } catch (error) {
+        console.error("Sign out failed:", error);
+        alert(`Sign out failed: ${error.message}`);
+      }
+    };
+
+    const accountEmail =
+      document.getElementById("accountEmail");
+
+    if (accountEmail) {
+      accountEmail.textContent = user.email || "";
+    }
 
 
     /*
