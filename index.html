@@ -190,5 +190,6 @@ function notifyUrgent(){if(!P.settings.notifications||!("Notification" in window
 function deadlinePulse(){if(P.opportunities.length){const overdue=P.opportunities.filter(o=>o.status!=="closed"&&daysUntil(o.deadline)<0).length;if(overdue)toast(`${overdue} opportunity deadline(s) overdue`);notifyUrgent()}}
 boot();
 </script>
+<script type="module" src="/src/supabase-test.js"></script>
 </body>
 </html>

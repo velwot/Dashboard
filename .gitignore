@@ -1,14 +1,32 @@
 # Private user data — never commit to a public repository
+# Backup/export files generated from the app or GPT workflow
 ict-ai-career-private-backup*.json
+gpt-private-backup*.json
 private-backup*.json
+**/private-backup*.json
 user-data*.json
+**/user-data*.json
 *.local.json
+**/*.local.json
+*.backup.json
+**/*.backup.json
+
+# Environment and secrets
 .env
 .env.*
 !.env.example
+
+# Node / local build artifacts
+node_modules/
+dist/
+build/
+.npm/
+*.log
+npm-debug.log*
 
 # Generated/editor files
 .DS_Store
 Thumbs.db
 .vscode/
 .idea/
+.env.local
