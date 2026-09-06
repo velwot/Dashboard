@@ -54,16 +54,162 @@ input,select,textarea{width:100%;border:1px solid #d0d5dd;border-radius:8px;padd
 const PRIVATE_KEY="ictAiCareerDashboard.private.v4";
 const DEFAULT_PRIVATE={schemaVersion:1,type:"private-backup",profile:{name:"",degree:"BE ICT",startYear:new Date().getFullYear(),target:"AI Systems / AI Engineering + Systems"},taskState:{},tasks:[],projects:[],people:[],opportunities:[],evidence:[],reviews:[],notes:[],settings:{focusYear:1,lastReview:"",notifications:false}};
 let P=loadPrivate(), T={schemaVersion:1,type:"public-template",goals:[],tasks:[],checklist:{},links:[],sources:[]}, view="dashboard", search="";
+function loadPrivate(){
+  try {
+    const x = JSON.parse(
+      localStorage.getItem(PRIVATE_KEY)
+    );
+
+    return {
+      ...DEFAULT_PRIVATE,
+      ...x,
+
+      profile: {
+        ...DEFAULT_PRIVATE.profile,
+        ...(x?.profile || {})
+      },
+
+      settings: {
+        ...DEFAULT_PRIVATE.settings,
+        ...(x?.settings || {})
+      }
+    };
+
+  } catch {
+    return structuredClone(DEFAULT_PRIVATE);
+  }
+}
 const STAGES=["discovered","shortlisted","preparing","applied","assessment","interview","accepted","rejected","withdrawn"];
 const TASK_STATUS=["todo","done"];
 
 function esc(v=""){return String(v).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
 function uid(p){return p+Math.random().toString(36).slice(2,9)}
-function save(){localStorage.setItem(PRIVATE_KEY,JSON.stringify(P))}
-function loadPrivate(){try{const x=JSON.parse(localStorage.getItem(PRIVATE_KEY));return {...DEFAULT_PRIVATE,...x,profile:{...DEFAULT_PRIVATE.profile,...(x?.profile||{})},settings:{...DEFAULT_PRIVATE.settings,...(x?.settings||{})}}}catch{return structuredClone(DEFAULT_PRIVATE)}}
+function save(){
+  localStorage.setItem(
+    PRIVATE_KEY,
+    JSON.stringify(P)
+  );
+
+  window.__scheduleCloudSync?.(
+    structuredClone(P)
+  );
+}
+function mergeItems(localItems = [], cloudItems = []) {
+  const map = new Map(
+    localItems
+      .filter(x => x && x.id)
+      .map(x => [String(x.id), x])
+  );
+
+  for (const item of cloudItems || []) {
+    if (!item || !item.id) continue;
+
+    const id = String(item.id);
+
+    map.set(
+      id,
+      {
+        ...(map.get(id) || {}),
+        ...item
+      }
+    );
+  }
+
+  return [...map.values()];
+}
+
+
+window.__applyCloudState = function(cloud) {
+
+  if (!cloud) return;
+
+
+  P = {
+    ...P,
+
+    profile: cloud.profile
+      ? {
+          ...P.profile,
+          ...cloud.profile
+        }
+      : P.profile,
+
+    taskState: {
+      ...(P.taskState || {}),
+      ...(cloud.taskState || {})
+    },
+
+    tasks: mergeItems(
+      P.tasks,
+      cloud.tasks
+    ),
+
+    projects: mergeItems(
+      P.projects,
+      cloud.projects
+    ),
+
+    people: mergeItems(
+      P.people,
+      cloud.people
+    ),
+
+    opportunities: mergeItems(
+      P.opportunities,
+      cloud.opportunities
+    ),
+
+    evidence: mergeItems(
+      P.evidence,
+      cloud.evidence
+    ),
+
+    reviews: mergeItems(
+      P.reviews,
+      cloud.reviews
+    ),
+
+    notes: mergeItems(
+      P.notes,
+      cloud.notes
+    ),
+
+    settings: {
+      ...(P.settings || {}),
+      ...(cloud.settings || {})
+    }
+  };
+
+
+  /*
+    Keep the local copy as a backup/cache.
+  */
+
+  localStorage.setItem(
+    PRIVATE_KEY,
+    JSON.stringify(P)
+  );
+
+
+  /*
+    If local v4 contained records that were not
+    in Supabase, the scheduled sync will upload them.
+  */
+
+  window.__scheduleCloudSync?.(
+    structuredClone(P)
+  );
+};
 async function boot(){
  try{const r=await fetch("./data/public-template.json",{cache:"no-store"});if(r.ok)T=await r.json()}catch(e){console.warn("Public template unavailable",e)}
- if("serviceWorker" in navigator && location.protocol!=="file:")navigator.serviceWorker.register("./sw.js").catch(()=>{});
+ if (
+  "serviceWorker" in navigator &&
+  location.protocol !== "file:" &&
+  location.hostname !== "localhost" &&
+  location.hostname !== "127.0.0.1"
+) {
+  navigator.serviceWorker.register("./sw.js").catch(() => {});
+}
  renderNav();render();deadlinePulse();
 }
 function toast(m){const x=document.getElementById("toast");x.textContent=m;x.classList.add("show");setTimeout(()=>x.classList.remove("show"),2400)}
@@ -167,9 +313,49 @@ function saveProof(){const e={id:uid("e"),title:document.getElementById("et").va
 function review(){return `<div class="card"><h2>Weekly review</h2><p>Last review: ${esc(P.settings.lastReview||"Never")}</p><div class="form"><div class="full"><label>What did I ship/finish?</label><textarea id="rq1"></textarea></div><div class="full"><label>What created capability?</label><textarea id="rq2"></textarea></div><div class="full"><label>What created proof, relationship or opportunity?</label><textarea id="rq3"></textarea></div><div class="full"><label>What was fake productivity?</label><textarea id="rq4"></textarea></div><div class="full"><label>What are next week's 3 highest-value actions?</label><textarea id="rq5"></textarea></div></div><button class="primary" onclick="saveReview()">Save review</button></div><div class="section list">${P.reviews.slice().reverse().map(r=>`<div class="item"><div class="item-head"><b>${esc(r.date)}</b><button class="icon" onclick="removePrivate('reviews','${r.id}')">×</button></div><p><b>Shipped:</b> ${esc(r.q1)}</p><p><b>Capability:</b> ${esc(r.q2)}</p><p><b>Proof/network:</b> ${esc(r.q3)}</p><p><b>Fake productivity:</b> ${esc(r.q4)}</p><p><b>Next:</b> ${esc(r.q5)}</p></div>`).join("")||'<div class="empty">No reviews yet.</div>'}</div>`}
 function saveReview(){const q=[1,2,3,4,5].map(i=>document.getElementById("rq"+i).value.trim());if(!q.some(Boolean))return alert("Write at least one answer.");const d=new Date().toISOString().slice(0,10);P.reviews.push({id:uid("r"),date:d,q1:q[0],q2:q[1],q3:q[2],q4:q[3],q5:q[4]});P.settings.lastReview=d;save();render();toast("Review saved")}
 function data(){return `<div class="grid two"><div class="card"><h2>Privacy model</h2><div class="privacy"><b>Public:</b> <code>data/public-template.json</code> — generic roadmap and discovery sources.</div><div class="privacy" style="margin-top:8px"><b>Private:</b> browser localStorage — applications, people, progress, reviews, projects and notes.</div><div class="dangerbox" style="margin-top:8px"><b>Never commit:</b> exported private backups, private contact data, credentials or API keys.</div></div><div class="card"><h2>Private profile</h2><div class="form"><div><label>Name</label><input id="dn" value="${esc(P.profile.name)}"></div><div><label>Degree</label><input id="dd" value="${esc(P.profile.degree)}"></div><div><label>Start year</label><input id="ds" type="number" value="${esc(P.profile.startYear)}"></div><div class="full"><label>Target</label><input id="dt" value="${esc(P.profile.target)}"></div></div><button class="primary" onclick="saveProfile()">Save profile</button></div></div><div class="section card"><h2>Backup / migration</h2><div class="actions"><button class="primary" onclick="exportPrivate()">Export private JSON</button><button class="ghost" onclick="document.getElementById('privateFile').click()">Import / merge private JSON</button><button class="ghost" onclick="openGpt()">GPT sync</button><button class="ghost" onclick="resetPrivate()">Reset private state</button></div><p class="small">Import is merge-based when IDs exist; it creates a safety backup before changing local data.</p></div>`}
-function saveProfile(){P.profile.name=document.getElementById("dn").value.trim();P.profile.degree=document.getElementById("dd").value.trim();P.profile.startYear=Number(document.getElementById("ds").value)||new Date().getFullYear();P.profile.target=document.getElementById("dt").value.trim();save();render();toast("Profile saved locally")}
+function saveProfile(){P.profile.name=document.getElementById("dn").value.trim();P.profile.degree=document.getElementById("dd").value.trim();P.profile.startYear=Number(document.getElementById("ds").value)||new Date().getFullYear();P.profile.target=document.getElementById("dt").value.trim();save();render();toast("Profile saved")}
 function removePrivate(c,id){if(!confirm("Delete this private item?"))return;P[c]=P[c].filter(x=>x.id!==id);save();render()}
-function resetPrivate(){if(!confirm("Reset all private data? Export first if you need a backup."))return;localStorage.removeItem(PRIVATE_KEY);location.reload()}
+async function resetPrivate(){
+
+  if (
+    !confirm(
+      "Reset ALL private Career OS data?\n\n" +
+      "This removes your cloud data and local copy. " +
+      "Your Supabase login account will remain."
+    )
+  ) {
+    return;
+  }
+
+
+  /*
+    Create a backup BEFORE destructive operation.
+  */
+
+  download(
+    JSON.stringify(P, null, 2),
+    "ict-ai-career-before-reset.json"
+  );
+
+
+  try {
+
+    await window.__resetCloudState?.();
+
+    localStorage.removeItem(PRIVATE_KEY);
+
+    location.reload();
+
+  } catch (error) {
+
+    console.error(error);
+
+    alert(
+      "Reset failed. Your local data was kept.\n\n" +
+      error.message
+    );
+  }
+}
 function download(text,name,type){const b=new Blob([text],{type:type||"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
 function exportPrivate(){download(JSON.stringify(P,null,2),"ict-ai-career-private-backup-v4.json")}
 function importPrivate(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const x=JSON.parse(r.result);if(x.schemaVersion!==1||x.type!=="private-backup")throw new Error("Expected schemaVersion 1 + type private-backup.");download(JSON.stringify(P,null,2),"ict-ai-career-pre-import-backup.json");P=mergePrivate(P,x);save();render();toast("Private data merged safely")}catch(err){alert("Import failed: "+err.message)}e.target.value=""};r.readAsText(f)}
@@ -188,8 +374,22 @@ function openGpt(){
 async function requestNotifications(){if(!("Notification" in window))return toast("Notifications are not supported.");const p=await Notification.requestPermission();P.settings.notifications=p==="granted";save();if(p==="granted"){notifyUrgent();toast("Browser alerts enabled")}else toast("Permission not granted")}
 function notifyUrgent(){if(!P.settings.notifications||!("Notification" in window)||Notification.permission!=="granted")return;const urgent=P.opportunities.filter(o=>o.status!=="closed"&&daysUntil(o.deadline)!==null&&daysUntil(o.deadline)<=3);if(urgent.length)new Notification("ICT Career Dashboard", {body:`${urgent.length} opportunity deadline(s) are due within 3 days.`})}
 function deadlinePulse(){if(P.opportunities.length){const overdue=P.opportunities.filter(o=>o.status!=="closed"&&daysUntil(o.deadline)<0).length;if(overdue)toast(`${overdue} opportunity deadline(s) overdue`);notifyUrgent()}}
-boot();
+window.__bootDashboard = boot;
 </script>
-<script type="module" src="/src/supabase-test.js"></script>
+
+
+<script type="module">
+  import {
+    scheduleCloudSync,
+    resetCloudState
+  } from "./src/cloud-sync.js";
+
+  window.__scheduleCloudSync = scheduleCloudSync;
+  window.__resetCloudState = resetCloudState;
+</script>
+
+<script type="module" src="/src/app-init.js"></script>
+
+
 </body>
 </html>

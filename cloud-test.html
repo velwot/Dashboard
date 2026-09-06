@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Career OS Cloud Test</title>
+</head>
+
+<body>
+  <h1>Career OS Cloud Test</h1>
+
+  <button id="test">Run test</button>
+
+  <pre id="output">Ready.</pre>
+
+  <script type="module">
+    import {
+      loadCloudState,
+      saveProject,
+      saveOpportunity,
+      savePerson,
+      saveEvidence,
+      saveReview,
+      saveTask,
+      deleteProject,
+      deleteOpportunity,
+      deletePerson,
+      deleteEvidence,
+      deleteReview,
+      deleteTaskByExternalId
+    } from "./src/db.js";
+
+    const output = document.getElementById("output");
+
+    document.getElementById("test").addEventListener("click", async () => {
+      output.textContent = "Testing...";
+
+      try {
+        const id = "cloud-test-" + Date.now();
+
+        const project = {
+          id,
+          title: "Cloud test project",
+          problem: "Temporary Supabase integration test",
+          stack: "JavaScript",
+          year: 1,
+          status: "active",
+          role: "Test",
+          result: "CRUD verified",
+          link: ""
+        };
+
+        const task = {
+          id,
+          title: "Cloud test task",
+          category: "Test",
+          year: 1,
+          priority: "low",
+          due: "",
+          status: "todo",
+          link: ""
+        };
+
+        const opportunity = {
+          id,
+          title: "Cloud test opportunity",
+          type: "Event",
+          company: "Test",
+          year: 1,
+          deadline: "",
+          followUpDate: "",
+          stage: "discovered",
+          status: "open",
+          fit: 50,
+          proofValue: 50,
+          learningValue: 50,
+          contact: "",
+          applyUrl: "",
+          sourceUrl: "",
+          notes: "Temporary test"
+        };
+
+        const person = {
+          id,
+          name: "Cloud Test Person",
+          role: "Test",
+          met: "Test",
+          last: "",
+          next: "",
+          notes: ""
+        };
+
+        const evidence = {
+          id,
+          title: "Cloud test evidence",
+          type: "project",
+          result: "CRUD verified",
+          link: "",
+          date: ""
+        };
+
+        const review = {
+          id,
+          date: new Date().toISOString().slice(0, 10),
+          q1: "Test",
+          q2: "Test",
+          q3: "Test",
+          q4: "Test",
+          q5: "Test"
+        };
+
+        await saveTask(task);
+        await saveProject(project);
+        await saveOpportunity(opportunity);
+        await savePerson(person);
+        await saveEvidence(evidence);
+        await saveReview(review);
+
+        const state = await loadCloudState();
+
+        const found = {
+          task: state.tasks.some(x => x.id === id),
+          project: state.projects.some(x => x.id === id),
+          opportunity: state.opportunities.some(x => x.id === id),
+          person: state.people.some(x => x.id === id),
+          evidence: state.evidence.some(x => x.id === id),
+          review: state.reviews.some(x => x.id === id)
+        };
+
+        await deleteTaskByExternalId(id);
+        await deleteProject(id);
+        await deleteOpportunity(id);
+        await deletePerson(id);
+        await deleteEvidence(id);
+        await deleteReview(id);
+
+        output.textContent = JSON.stringify(
+          {
+            success: Object.values(found).every(Boolean),
+            records_found: found,
+            cleanup: "completed"
+          },
+          null,
+          2
+        );
+      } catch (error) {
+        console.error(error);
+
+        output.textContent = JSON.stringify(
+          {
+            success: false,
+            error: error.message,
+            details: error
+          },
+          null,
+          2
+        );
+      }
+    });
+  </script>
+</body>
+</html>
