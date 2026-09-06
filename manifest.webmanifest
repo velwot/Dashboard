@@ -3,8 +3,15 @@
   "short_name": "ICT Career",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#f6f7fb",
-  "theme_color": "#111827",
+  "background_color": "#f5f7fb",
+  "theme_color": "#111b30",
   "description": "Private-first four-year career and opportunity dashboard for BE ICT students.",
-  "icons": []
+  "icons": [
+    {
+      "src": "./assets/app-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
 }

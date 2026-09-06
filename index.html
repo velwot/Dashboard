@@ -5,9 +5,10 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#111827">
 <link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./assets/app-icon.svg">
 <title>ICT → AI Era Career Dashboard v4</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&family=Noto+Serif+JP:wght@700;800;900&display=swap');
 
 :root{--nav-width:258px;--bg:#f5f7fb;--surface:#111b30;--panel:#ffffff;--panel-hover:#f8faff;--muted:#667085;--text:#172033;--border:#e4e9f1;--line:#edf0f5;--accent:#4f5fd7;--accent-strong:#4050c0;--success:#18865b;--warning:#ae7100;--danger:#c4455d;--shadow:0 12px 32px rgba(31,45,72,.07)}
 *{box-sizing:border-box}html,body{min-height:100%}body{margin:0;background:radial-gradient(circle at 95% -15%,#e5eaff 0,transparent 29%),var(--bg);color:var(--text);font:14px/1.5 'DM Sans',ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased}button,input,select,textarea{font:inherit}button{cursor:pointer}
@@ -22,8 +23,11 @@ input,select,textarea{width:100%;height:40px;padding:9px 11px;border:1px solid #
 .pipeline{display:grid;grid-template-columns:repeat(6,minmax(190px,1fr));gap:14px;overflow-x:auto;padding-bottom:5px}.lane{min-height:210px;padding:12px;border:1px solid var(--border);border-radius:12px;background:#f8f9fc}.opp-card{margin-top:10px;padding:12px;border:1px solid var(--line);border-radius:9px;background:#fff;box-shadow:0 2px 6px rgba(31,45,72,.035)}.opp-card:hover{background:#fafbff}.modal{position:fixed;inset:0;z-index:120;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(16,24,40,.48);backdrop-filter:blur(5px)}.modal.show{display:flex}.modal-box{width:100%;max-width:760px;max-height:90vh;overflow:auto;padding:22px;border:1px solid var(--border);border-radius:15px;background:#fff;box-shadow:0 30px 80px rgba(16,24,40,.25)}.toast{position:fixed;right:22px;bottom:22px;z-index:130;display:none;padding:11px 14px;border:1px solid var(--border);border-radius:9px;background:#172033;color:#fff;box-shadow:var(--shadow)}.toast.show{display:block}
 @media(max-width:1080px){main{padding:30px}.pipeline{grid-template-columns:repeat(6,minmax(180px,1fr))}}@media(max-width:800px){.app{display:block}aside{position:relative;height:auto;padding:18px 14px}.brand,.brand-sub{padding:0;margin-left:4px}.brand-sub{margin-bottom:15px}nav{display:flex;flex-direction:row;overflow-x:auto;padding-bottom:2px}nav button{width:auto;white-space:nowrap}.side-note,.sidebar-foot{display:none}main{padding:24px 18px}header{flex-direction:column;margin-bottom:22px;padding-bottom:20px}.actions{justify-content:flex-start}.full{grid-column:auto}}@media(max-width:500px){h1{font-size:25px}.two{grid-template-columns:1fr}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.card,.panel{padding:14px}.actions > *{flex:1}.actions .badge,.actions #accountEmail{flex:0 1 auto}}
 
-/* Optional novelty theme remains available without changing the product default. */
-.manga-mode{--bg:#f5f5f2;--surface:#fff;--panel:#fff;--panel-hover:#fafafa;--muted:#4b5563;--text:#111827;--border:rgba(17,24,39,.16);--line:rgba(17,24,39,.12);--accent:#111827;--accent-strong:#111827;background:#f5f5f2}.manga-mode .card,.manga-mode .panel,.manga-mode .modal-box{box-shadow:5px 5px 0 #111827}.manga-mode aside{background:#fff}
+/* Alternate manga/anime theme — activated by the existing Manga switch. */
+body.manga-mode{--bg:#ece9e1;--surface:#171717;--panel:#fffdf8;--panel-hover:#fff8ec;--muted:#625e58;--text:#141414;--border:#1c1c1c;--line:#d8d1c4;--accent:#d3222a;--accent-strong:#a4141a;--success:#13734a;--warning:#9a5d00;--danger:#ba1521;background:radial-gradient(circle at 18% 15%,rgba(211,34,42,.09),transparent 24%),repeating-linear-gradient(0deg,rgba(20,20,20,.025) 0 1px,transparent 1px 4px),var(--bg);font-family:'Noto Serif JP','DM Sans',serif}
+.manga-mode h1,.manga-mode h2,.manga-mode h3,.manga-mode .brand{font-family:'Noto Serif JP',Georgia,serif}.manga-mode h1{font-size:32px;letter-spacing:-.06em;text-transform:uppercase}.manga-mode h1::after{content:'';display:block;width:74px;height:5px;margin-top:10px;background:var(--accent);box-shadow:8px 0 0 #141414}.manga-mode header{padding:20px 22px 22px;border:3px solid #171717;border-radius:4px;background:#fffdf8;box-shadow:7px 7px 0 #171717}.manga-mode aside{background:linear-gradient(155deg,#242424,#101010);border-right:4px solid var(--accent);box-shadow:none}.manga-mode .brand{color:#fff;font-size:19px}.manga-mode .brand::first-letter{color:#ff5360}.manga-mode nav button{border-radius:3px;font-family:'Noto Serif JP',serif}.manga-mode nav button.active{background:var(--accent);box-shadow:4px 4px 0 #050505,inset 3px 0 #fff;color:#fff}.manga-mode nav button:hover{background:rgba(255,255,255,.15)}.manga-mode .side-note,.manga-mode .sidebar-foot{color:#d0c8bb}
+.manga-mode .card,.manga-mode .panel,.manga-mode .modal-box{position:relative;overflow:hidden;border:3px solid #171717;border-radius:4px;background:var(--panel);box-shadow:6px 6px 0 #171717}.manga-mode .card::before{content:'';position:absolute;inset:0;pointer-events:none;opacity:.18;background-image:radial-gradient(#171717 .65px,transparent .75px);background-size:5px 5px;mask-image:linear-gradient(135deg,#000,transparent 45%)}.manga-mode .card>*{position:relative}.manga-mode .cards .card:nth-child(3n+1){border-top-color:var(--accent);border-top-width:6px}.manga-mode .card:hover{transform:translate(-2px,-2px);border-color:#171717;box-shadow:9px 9px 0 #171717}.manga-mode .item{border-bottom-style:dashed;border-bottom-color:#cfc7ba}.manga-mode .lane{border:3px solid #171717;border-radius:3px;background:#e2ddd2;box-shadow:4px 4px 0 rgba(20,20,20,.82)}.manga-mode .opp-card{border:2px solid #171717;border-radius:2px;background:#fffdf8;box-shadow:3px 3px 0 rgba(20,20,20,.75)}.manga-mode .opp-card:hover{background:#fff6e6}
+.manga-mode .primary{border:2px solid #171717;border-radius:3px;background:var(--accent);box-shadow:4px 4px 0 #171717;font-family:'Noto Serif JP',serif}.manga-mode .primary:hover{background:#b71820;box-shadow:6px 6px 0 #171717}.manga-mode .ghost,.manga-mode .icon{border:2px solid #171717;border-radius:3px;background:#fffdf8;color:#171717;box-shadow:2px 2px 0 #171717}.manga-mode .ghost:hover,.manga-mode .icon:hover{background:#ffe9c3;color:#171717}.manga-mode .badge{border:1.5px solid #171717;border-radius:2px;background:#fff;color:#171717;font-family:'Noto Serif JP',serif}.manga-mode .badge.good{background:#dff6e8;color:#075e38}.manga-mode .badge.warn{background:#ffedbd;color:#754400}.manga-mode .badge.danger{background:#ffe1e3;color:#9f0f18}.manga-mode input,.manga-mode select,.manga-mode textarea{border:2px solid #171717;border-radius:2px;background:#fffefb;color:#171717}.manga-mode label{color:#171717;font-family:'Noto Serif JP',serif}.manga-mode .privacy,.manga-mode .notice,.manga-mode .dangerbox{border:2px solid #171717;border-left:7px solid var(--accent);border-radius:2px;background:#fff7e8;color:#3c3832}.manga-mode .link{color:#a4141a}.manga-mode .progress{border:1px solid #171717;border-radius:0;background:#fff}.manga-mode .progress span{background:repeating-linear-gradient(135deg,var(--accent) 0 7px,#ff6670 7px 11px)}.manga-mode .toast{border:3px solid #171717;border-radius:3px;background:#fffdf8;color:#171717;box-shadow:5px 5px 0 #171717}
 </style>
 </head>
 <body>
@@ -40,6 +44,7 @@ input,select,textarea{width:100%;height:40px;padding:9px 11px;border:1px solid #
   <div><div class="small" id="today"></div><h1 id="title">Dashboard</h1><p id="subtitle">Turn opportunities into actions and outcomes.</p></div>
   <div class="actions">
   <button class="primary" onclick="addOpportunity()">+ Opportunity</button>
+  <button id="installApp" class="ghost" type="button" hidden onclick="window.installCareerApp?.()">Install app</button>
   <button class="ghost" onclick="exportPrivate()">Export</button>
   <button class="ghost" onclick="openGpt()">GPT sync</button>
   <span id="cloudStatus" class="badge">Cloud: checking</span>
@@ -57,6 +62,46 @@ input,select,textarea{width:100%;height:40px;padding:9px 11px;border:1px solid #
 </main>
 </div>
 <div id="modal" class="modal"><div id="modalBox" class="modal-box"></div></div><div id="toast" class="toast"></div>
+
+<script>
+/* PWA install flow: Android/Chrome gets the native prompt; iPhone gets clear Safari instructions. */
+let deferredInstallPrompt = null;
+const isAppleMobile = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+const isStandaloneApp = window.matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+
+function syncInstallButton(){
+  const button = document.getElementById("installApp");
+  if (!button) return;
+  button.hidden = isStandaloneApp || (!deferredInstallPrompt && !isAppleMobile);
+}
+
+window.addEventListener("beforeinstallprompt", event => {
+  event.preventDefault();
+  deferredInstallPrompt = event;
+  syncInstallButton();
+});
+
+window.addEventListener("appinstalled", () => {
+  deferredInstallPrompt = null;
+  const button = document.getElementById("installApp");
+  if (button) button.hidden = true;
+});
+
+window.installCareerApp = async function(){
+  if (deferredInstallPrompt) {
+    deferredInstallPrompt.prompt();
+    await deferredInstallPrompt.userChoice;
+    deferredInstallPrompt = null;
+    syncInstallButton();
+    return;
+  }
+  if (isAppleMobile) {
+    modal("Install Career OS", "<p>In Safari, tap the <b>Share</b> button, then choose <b>Add to Home Screen</b>. Confirm <b>Add</b> to install this dashboard as an app.</p><p class='small'>Open the site in Safari rather than an in-app browser if you do not see the Share button.</p>", "<button class='primary' onclick='closeModal()'>Got it</button>");
+    return;
+  }
+  modal("Install Career OS", "<p>To install this dashboard, open your browser menu and choose <b>Install app</b> or <b>Add to Home screen</b>.</p>", "<button class='primary' onclick='closeModal()'>Got it</button>");
+};
+</script>
 
 <script>
 const PRIVATE_KEY="ictAiCareerDashboard.private.v4";
