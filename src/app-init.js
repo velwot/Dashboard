@@ -24,6 +24,12 @@ let dashboardStarted = false;
    ============================================================ */
 
 function createGate() {
+  // Avoid creating the gate multiple times
+  if (gate && document.body.contains(gate)) {
+    renderGate();
+    return;
+  }
+
   gate = document.createElement("div");
 
   gate.style.cssText = `
@@ -392,25 +398,50 @@ async function startDashboard() {
 
 async function start() {
 
-  app.hidden = true;
+  // Keep the dashboard hidden until authentication is confirmed
+  try {
+    app.hidden = true;
 
-  createGate();
+    createGate();
 
+    const user = await getCurrentUser();
 
-  const user = await getCurrentUser();
-
-  if (user) {
-    await startDashboard();
-  }
-
-
-  watchAuth(async (_event, session) => {
-
-    if (session?.user) {
+    if (user) {
       await startDashboard();
     }
 
-  });
+    watchAuth(async (_event, session) => {
+      // If a user signs in, initialize once
+      if (session?.user) {
+        if (!dashboardStarted) {
+          await startDashboard();
+        }
+        return;
+      }
+
+      // Signed out or no session: hide app and show gate
+      try {
+        dashboardStarted = false;
+        app.hidden = true;
+        createGate();
+      } catch (err) {
+        console.error("Error handling sign-out state:", err);
+      }
+    });
+
+  } catch (error) {
+    console.error("Auth initialization failed:", error);
+    // Show a clear message in the gate if available
+    try {
+      createGate();
+      const message = document.getElementById("auth-message");
+      if (message) {
+        message.textContent = `Authentication initialization failed: ${error.message}`;
+      }
+    } catch (err) {
+      console.error("Failed to display auth error:", err);
+    }
+  }
 }
 
 

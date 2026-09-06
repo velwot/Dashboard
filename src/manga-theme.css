@@ -1,0 +1,46 @@
+/* Manga Theme — Strong ink scoped to selected components.
+   Only header, .card, .panel, .badge and .speech-bubble receive heavy ink treatment.
+   Other UI elements remain under the base stylesheet.
+*/
+
+:root{
+  --manga-ink:#050505;
+  --manga-accent:#0b4fff;
+}
+
+/* Halftone only for panels that opt in via .page-halftone */
+.page-halftone::after{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,#000 1px,transparent 1px);background-size:3px 3px;opacity:0.12}
+
+/* Strong comic panel treatment (scoped) */
+.manga-mode header,
+.manga-mode .card,
+.manga-mode .panel{
+  border:8px solid var(--manga-ink);
+  border-radius:14px;
+  background:var(--panel);
+  box-shadow:0 24px 60px rgba(0,0,0,0.10);
+  padding:18px;
+}
+
+/* Badge and speech bubble treatment (scoped) */
+.manga-mode .badge,
+.manga-mode .speech-bubble{
+  border:6px solid var(--manga-ink);
+  background:transparent;
+  padding:8px 12px;
+  border-radius:999px;
+  font-weight:900;
+}
+
+/* Subtle animation/ink effects (safe for scoped use) */
+.manga-mode .panel{transition:transform .36s cubic-bezier(.2,.9,.2,1),box-shadow .36s}
+.manga-mode .page-turn{animation:pageTurn 580ms ease}
+@keyframes pageTurn{0%{transform:perspective(900px) rotateY(0deg)}50%{transform:perspective(900px) rotateY(-16deg) translateX(8px)}100%{transform:perspective(900px) rotateY(0deg)}}
+
+/* Ink splash and toast shake scoped */
+.manga-mode .ink-splash::after{background:radial-gradient(circle at 30% 30%, rgba(0,0,0,0.22) 0, rgba(0,0,0,0.12) 12%, transparent 36%)}
+@keyframes mangaShake{0%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}100%{transform:translateX(0)}}
+.manga-mode .toast.manga-shake{animation:mangaShake 420ms ease}
+
+/* Keep typography and overall colors untouched — only targets above elements */
+

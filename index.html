@@ -7,37 +7,33 @@
 <link rel="manifest" href="./manifest.webmanifest">
 <title>ICT → AI Era Career Dashboard v4</title>
 <style>
-:root{--bg:#f6f7fb;--panel:#fff;--text:#18202a;--muted:#667085;--line:#e5e7eb;--accent:#4f46e5;--accent2:#eef2ff;--good:#15803d;--goodbg:#ecfdf3;--warn:#b45309;--warnbg:#fff7ed;--danger:#b91c1c;--dangerbg:#fef2f2;--shadow:0 6px 24px rgba(16,24,40,.07)}
-*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.45}
-button,input,select,textarea{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:255px 1fr;min-height:100vh}
-aside{background:#111827;color:#fff;padding:20px;position:sticky;top:0;height:100vh}.brand{font-weight:800;font-size:17px}.brand-sub{font-size:12px;color:#9ca3af;margin:4px 0 20px}nav button{width:100%;text-align:left;border:0;background:transparent;color:#d1d5db;padding:10px 11px;border-radius:9px;margin:2px 0}nav button.active,nav button:hover{background:#1f2937;color:#fff}.side-note{font-size:11px;color:#9ca3af;margin-top:16px}.sidebar-foot{position:absolute;bottom:16px;left:20px;right:20px;font-size:11px;color:#9ca3af}
-main{padding:28px;max-width:1500px;width:100%;margin:auto}header{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:18px}
-h1{font-size:28px;letter-spacing:-.02em;margin:0 0 6px}h2{font-size:20px;margin:0 0 8px}h3{font-size:15px;margin:0 0 8px}p{margin:6px 0;color:var(--muted)}
-.small{font-size:12px;color:var(--muted)}.actions,.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.right{margin-left:auto}
-button.primary,button.ghost,.icon,.chip{border:1px solid var(--line);border-radius:9px;padding:9px 12px;background:#fff;color:var(--text)}button.primary{background:var(--accent);color:#fff;border-color:var(--accent)}.icon{padding:6px 9px}
-.grid{display:grid;gap:14px}.cards{grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}.two{grid-template-columns:repeat(auto-fit,minmax(340px,1fr))}.three{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:16px;box-shadow:var(--shadow)}.section{margin-top:18px}.stat{font-size:27px;font-weight:800}.stat-label{font-size:12px;color:var(--muted)}
-.progress{height:8px;background:#eef0f4;border-radius:999px;overflow:hidden}.progress span{display:block;height:100%;background:var(--accent);border-radius:999px}
-.badge{display:inline-flex;padding:3px 7px;border-radius:999px;font-size:11px;font-weight:700;background:#f3f4f6;color:#475467}.badge.good{background:var(--goodbg);color:#166534}.badge.warn{background:var(--warnbg);color:#9a3412}.badge.danger{background:var(--dangerbg);color:#991b1b}
-table{width:100%;border-collapse:collapse}th,td{padding:9px 7px;border-bottom:1px solid var(--line);text-align:left;font-size:13px;vertical-align:top}th{font-size:12px;color:var(--muted)}
-input,select,textarea{width:100%;border:1px solid #d0d5dd;border-radius:8px;padding:9px 10px;background:#fff;color:var(--text)}textarea{min-height:90px;resize:vertical}label{font-size:12px;font-weight:700;color:#344054;display:block;margin-bottom:5px}.form{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:10px}.full{grid-column:1/-1}
-.list{display:flex;flex-direction:column;gap:8px}.item{border:1px solid var(--line);border-radius:10px;padding:12px;background:#fff}.item-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.item-title{font-weight:700}
-.link{color:#4338ca;text-decoration:none}.link:hover{text-decoration:underline}.privacy{background:var(--goodbg);border:1px solid #bbf7d0;color:#166534;padding:12px;border-radius:10px;font-size:13px}.notice{background:#fffbeb;border:1px solid #fde68a;color:#854d0e;padding:11px;border-radius:10px;font-size:13px}.dangerbox{background:var(--dangerbg);border:1px solid #fecaca;color:#991b1b;padding:11px;border-radius:10px;font-size:13px}
-.chip{padding:7px 9px;font-size:12px}.chip.active{background:var(--accent2);border-color:#c7d2fe;color:#3730a3;font-weight:700}.score{display:flex;align-items:center;gap:8px}.scorebar{flex:1;height:7px;border-radius:999px;background:#eef0f4;overflow:hidden}.scorebar span{display:block;height:100%;background:var(--accent)}
-.pipeline{display:grid;grid-template-columns:repeat(6,minmax(170px,1fr));gap:10px;overflow:auto}.lane{background:#f8fafc;border:1px solid var(--line);border-radius:12px;padding:10px;min-height:220px}.lane h3{font-size:13px}.kanban{display:flex;flex-direction:column;gap:7px}.opp-card{background:#fff;border:1px solid var(--line);border-radius:9px;padding:9px}.opp-card:hover{border-color:#c7d2fe}.urgency{font-size:11px;font-weight:700}
-.modal{position:fixed;inset:0;background:rgba(17,24,39,.45);display:none;align-items:center;justify-content:center;padding:18px;z-index:20}.modal.show{display:flex}.modal-box{background:#fff;max-width:760px;width:100%;max-height:92vh;overflow:auto;border-radius:14px;padding:18px;box-shadow:0 16px 60px rgba(0,0,0,.25)}
-.toast{position:fixed;right:18px;bottom:18px;background:#111827;color:#fff;padding:10px 13px;border-radius:9px;display:none;z-index:30}.toast.show{display:block}
-@media(max-width:1050px){.pipeline{grid-template-columns:repeat(3,minmax(180px,1fr));overflow:auto}}@media(max-width:850px){.app{grid-template-columns:1fr}aside{position:relative;height:auto}.sidebar-foot{position:static;margin-top:12px}main{padding:18px}header{flex-direction:column}.full{grid-column:auto}}
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap');
+
+:root{--nav-width:258px;--bg:#f5f7fb;--surface:#111b30;--panel:#ffffff;--panel-hover:#f8faff;--muted:#667085;--text:#172033;--border:#e4e9f1;--line:#edf0f5;--accent:#4f5fd7;--accent-strong:#4050c0;--success:#18865b;--warning:#ae7100;--danger:#c4455d;--shadow:0 12px 32px rgba(31,45,72,.07)}
+*{box-sizing:border-box}html,body{min-height:100%}body{margin:0;background:radial-gradient(circle at 95% -15%,#e5eaff 0,transparent 29%),var(--bg);color:var(--text);font:14px/1.5 'DM Sans',ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased}button,input,select,textarea{font:inherit}button{cursor:pointer}
+.app{display:grid;grid-template-columns:var(--nav-width) minmax(0,1fr);min-height:100vh}.app[hidden]{display:none!important}
+aside{position:sticky;top:0;height:100vh;padding:30px 16px;background:var(--surface);border-right:1px solid rgba(255,255,255,.07);box-shadow:8px 0 30px rgba(27,39,71,.04)}
+.brand{font:800 18px/1.2 Manrope,sans-serif;letter-spacing:-.045em;padding:0 10px;color:#fff}.brand::first-letter{color:#aeb9ff}.brand-sub{margin:7px 10px 26px;color:#aab5ca;font-size:12px}nav{display:flex;flex-direction:column;gap:4px}nav button{width:100%;display:flex;align-items:center;border:0;border-radius:9px;padding:10px 12px;background:transparent;color:#b4bed0;font-weight:600;text-align:left;transition:.18s ease}nav button:hover{background:rgba(255,255,255,.07);color:#fff}nav button.active{background:linear-gradient(90deg,rgba(111,128,239,.34),rgba(111,128,239,.11));box-shadow:inset 3px 0 #a9b5ff;color:#fff}.side-note,.sidebar-foot{color:#9da9bf;font-size:12px}.side-note{position:absolute;bottom:56px;left:26px;line-height:1.55}.sidebar-foot{position:absolute;bottom:24px;left:26px}
+main{width:100%;max-width:1540px;margin:0 auto;padding:38px 48px 56px}header{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;margin-bottom:28px;padding-bottom:25px;border-bottom:1px solid var(--border)}h1,h2,h3{font-family:Manrope,sans-serif;letter-spacing:-.035em}h1{margin:3px 0 2px;font-size:30px;line-height:1.2}h2{margin:0;font-size:16px}h3{margin:0;font-size:14px}p{margin:6px 0;color:var(--muted)}.small{color:var(--muted);font-size:12px}.actions,.row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.actions{justify-content:flex-end}.right{margin-left:auto}
+button,.ghost,.primary,.icon{display:inline-flex;align-items:center;justify-content:center;border-radius:8px;border:1px solid transparent;min-height:36px;padding:8px 11px;color:var(--text);font-weight:600;transition:transform .16s ease,background .16s ease,border-color .16s ease,box-shadow .16s ease}.primary{background:#4f5fd7;box-shadow:0 7px 15px rgba(79,95,215,.2);color:white}.primary:hover{transform:translateY(-1px);background:#4353c8;box-shadow:0 10px 20px rgba(79,95,215,.25)}.ghost,.icon{background:#fff;border-color:var(--border);color:#475467}.ghost:hover,.icon:hover{background:#f4f6fb;border-color:#cbd3e1;color:#172033}.icon{min-width:34px;padding:6px}.primary:focus-visible,.ghost:focus-visible,.icon:focus-visible,input:focus,select:focus,textarea:focus{outline:2px solid var(--accent-strong);outline-offset:2px}
+.grid{display:grid;gap:18px}.cards{grid-template-columns:repeat(auto-fit,minmax(165px,1fr))}.two{grid-template-columns:repeat(auto-fit,minmax(310px,1fr))}.three{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}.section{margin-top:18px}.card,.panel{background:var(--panel);border:1px solid var(--border);border-radius:13px;padding:18px;box-shadow:var(--shadow)}.card{transition:transform .18s ease,border-color .18s ease}.card:hover{border-color:#d4dbea}.cards .card{padding:17px}.stat{font:800 27px/1 Manrope,sans-serif;letter-spacing:-.055em}.stat-label{margin-top:7px;color:var(--muted);font-size:12px}.item{padding:12px 0;border-bottom:1px solid var(--line)}.item:last-child{border-bottom:0}.item-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.item-title{font-weight:700}.list{display:flex;flex-direction:column}.empty{padding:22px 4px;color:var(--muted);text-align:center}.link{color:var(--accent-strong);font-weight:600;text-decoration:none}.link:hover{text-decoration:underline}
+.badge{display:inline-flex;align-items:center;min-height:24px;padding:3px 8px;border:1px solid #e2e6ef;border-radius:999px;background:#f5f7fa;color:#566176;font-size:11px;font-weight:700;white-space:nowrap}.badge.good{background:#ecf9f2;border-color:#cdeedc;color:var(--success)}.badge.warn{background:#fff7e5;border-color:#f6e0ae;color:var(--warning)}.badge.danger{background:#fff0f2;border-color:#f3d1d8;color:var(--danger)}.progress{height:7px;overflow:hidden;border-radius:99px;background:#e8ebf2}.progress span{display:block;height:100%;border-radius:inherit;background:var(--accent)}
+input,select,textarea{width:100%;height:40px;padding:9px 11px;border:1px solid #dbe1eb;border-radius:8px;background:#fff;color:var(--text);transition:border-color .16s ease,background .16s ease}textarea{min-height:120px;height:auto;resize:vertical}input::placeholder,textarea::placeholder{color:#98a2b3}select option{background:#fff}label{display:block;margin-bottom:7px;font-size:12px;font-weight:700;color:#344054}.form{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}.full{grid-column:1/-1}table{width:100%;border-collapse:collapse}th,td{padding:12px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.06em}.privacy,.notice,.dangerbox{padding:12px 13px;border-left:3px solid;border-radius:7px;background:#fafbfd;color:#475467;font-size:13px}.privacy{border-color:var(--success)}.notice{border-color:var(--warning)}.dangerbox{border-color:var(--danger)}
+.pipeline{display:grid;grid-template-columns:repeat(6,minmax(190px,1fr));gap:14px;overflow-x:auto;padding-bottom:5px}.lane{min-height:210px;padding:12px;border:1px solid var(--border);border-radius:12px;background:#f8f9fc}.opp-card{margin-top:10px;padding:12px;border:1px solid var(--line);border-radius:9px;background:#fff;box-shadow:0 2px 6px rgba(31,45,72,.035)}.opp-card:hover{background:#fafbff}.modal{position:fixed;inset:0;z-index:120;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(16,24,40,.48);backdrop-filter:blur(5px)}.modal.show{display:flex}.modal-box{width:100%;max-width:760px;max-height:90vh;overflow:auto;padding:22px;border:1px solid var(--border);border-radius:15px;background:#fff;box-shadow:0 30px 80px rgba(16,24,40,.25)}.toast{position:fixed;right:22px;bottom:22px;z-index:130;display:none;padding:11px 14px;border:1px solid var(--border);border-radius:9px;background:#172033;color:#fff;box-shadow:var(--shadow)}.toast.show{display:block}
+@media(max-width:1080px){main{padding:30px}.pipeline{grid-template-columns:repeat(6,minmax(180px,1fr))}}@media(max-width:800px){.app{display:block}aside{position:relative;height:auto;padding:18px 14px}.brand,.brand-sub{padding:0;margin-left:4px}.brand-sub{margin-bottom:15px}nav{display:flex;flex-direction:row;overflow-x:auto;padding-bottom:2px}nav button{width:auto;white-space:nowrap}.side-note,.sidebar-foot{display:none}main{padding:24px 18px}header{flex-direction:column;margin-bottom:22px;padding-bottom:20px}.actions{justify-content:flex-start}.full{grid-column:auto}}@media(max-width:500px){h1{font-size:25px}.two{grid-template-columns:1fr}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.card,.panel{padding:14px}.actions > *{flex:1}.actions .badge,.actions #accountEmail{flex:0 1 auto}}
+
+/* Optional novelty theme remains available without changing the product default. */
+.manga-mode{--bg:#f5f5f2;--surface:#fff;--panel:#fff;--panel-hover:#fafafa;--muted:#4b5563;--text:#111827;--border:rgba(17,24,39,.16);--line:rgba(17,24,39,.12);--accent:#111827;--accent-strong:#111827;background:#f5f5f2}.manga-mode .card,.manga-mode .panel,.manga-mode .modal-box{box-shadow:5px 5px 0 #111827}.manga-mode aside{background:#fff}
 </style>
 </head>
 <body>
-<div class="app">
+<div class="app" hidden>
 <aside>
   <div class="brand">ICT → AI Era</div>
-  <div class="brand-sub">Career + opportunity engine</div>
+  <div class="brand-sub">Career intelligence, clearly organized</div>
   <nav id="nav"></nav>
-  <div class="side-note">Discovery is public.<br>Tracking is private.</div>
-  <div class="sidebar-foot">v4 · cloud-backed · PWA capable</div>
+  <div class="side-note">Discovery is public.<br>Progress stays private.</div>
+  <div class="sidebar-foot">Career OS · cloud synced</div>
 </aside>
 <main>
 <header>
@@ -52,6 +48,7 @@ input,select,textarea{width:100%;border:1px solid #d0d5dd;border-radius:8px;padd
     class="small"
     style="padding:9px 4px"
   ></span>
+  <button id="mangaToggle" class="ghost" title="Toggle manga theme">Manga</button>
   <button class="ghost" onclick="window.__signOut?.()">Sign out</button>
 </div>
   <input id="privateFile" type="file" accept=".json,application/json" hidden onchange="importPrivate(event)">
@@ -401,6 +398,39 @@ window.__bootDashboard = boot;
 
 <script type="module" src="/src/app-init.js"></script>
 
+<script>
+// Manga animation helpers + UI toggle with persistence
+function setMangaMode(on){
+  if(on) document.body.classList.add('manga-mode'); else document.body.classList.remove('manga-mode');
+  localStorage.setItem('mangaMode', on ? '1' : '0');
+  const btn = document.getElementById('mangaToggle');
+  if(btn){ btn.classList.toggle('active', on); btn.textContent = on ? 'Manga: On' : 'Manga: Off'; btn.setAttribute('aria-pressed', on); }
+  return on;
+}
+
+window.toggleManga = function(on){
+  if(typeof on === 'undefined') return setMangaMode(!document.body.classList.contains('manga-mode'));
+  return setMangaMode(Boolean(on));
+}
+
+window.mangaPageTurn = function(){
+  const el = document.querySelector('.app'); if(!el) return; el.classList.add('page-turn'); setTimeout(()=>el.classList.remove('page-turn'),600);
+}
+
+window.mangaToast = function(msg){
+  const t = document.getElementById('toast'); if(!t) return; t.textContent = msg; t.classList.add('show','manga-shake','ink-splash');
+  setTimeout(()=>t.classList.remove('show','manga-shake'),2400);
+  setTimeout(()=>t.classList.remove('ink-splash'),420);
+}
+
+document.addEventListener('DOMContentLoaded', ()=>{
+  const pref = localStorage.getItem('mangaMode');
+  const initOn = pref === '1' ? true : (pref === '0' ? false : document.body.classList.contains('manga-mode'));
+  setMangaMode(initOn);
+  const btn = document.getElementById('mangaToggle');
+  if(btn) btn.addEventListener('click', ()=> setMangaMode(!document.body.classList.contains('manga-mode')));
+});
+</script>
 
 </body>
 </html>
